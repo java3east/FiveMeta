@@ -64,3 +64,10 @@ files = nil
 
 ---@type fun(dependency: string)
 dependency = nil
+
+---Local player object
+LocalPlayer = {}
+
+---Local player statebags
+---@class PLAYER_STATE
+LocalPlayer.state = {}

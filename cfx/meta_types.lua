@@ -34,5 +34,17 @@
 ---@class player        : integer
 ---@class jsonString    : string
 ---@class URL           : string
+---@class base64        : string
+---@class HTML          : string
 ---@class vehicle       : entity
 ---@class ped           : entity
+---@class object        : entity
+
+
+
+--[[
+    ANNOTATION TYPES
+]]
+
+---@class SERVER_ONLY
+---@class CLIENT_ONLY
