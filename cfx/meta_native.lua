@@ -813,3 +813,19 @@ function SaveResourceFile(resourceName, fileName, data, dataLength) end
 ---Returns the name of the calling resource.
 ---@return string invokingResource
 function GetInvokingResource() end
+
+---Sets how the blip is going to be displayed.
+---@param blip blip the blip to set the display for.
+---@param display integer the display type.<br>
+---0: Don't show<br>
+---1: Don't show<br>
+---2: minimap & mainmap<br>
+---3: mainmap (selectable)<br>
+---4: mainmap (selectable)<br>
+---5: minimap<br>
+---6: minimap & mainmap (selectable)<br>
+---7: Don't show<br>
+---8: minimap & mainmap<br>
+---9: minimap<br>
+---10: minimap & mainmap<br>
+function SetBlipDisplay(blip, display) end
