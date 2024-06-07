@@ -8,11 +8,12 @@ The objective of this resource is easier resource development, by providing meta
 - support for some native functions
 - support for basic types (only for type savety, they are all based on default lua types)
 - support for oxmysql
+- support for esx (only functions listed in the [documentation](https://documentation.esx-framework.org/legacy/installation/))
 
 ## Installation
 To use the metafiles contained within this resource, do the following:
 1. install the [LUA](vscode:extension/sumneko.lua) vs-code extension
-2. put the downloaded files into your working directory
+2. put the downloaded files into your working directory (OR go into the extension settings and add the path to "Lua > Workspace: Library" pritty much at the end, that will automatically include it in all your projects)
 3. have fun with intellisense :D
 
 ## Contributing
