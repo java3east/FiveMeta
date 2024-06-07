@@ -11,6 +11,12 @@
 
 ---@meta
 
+--[[
+    THE FOLLOWING INFORMATION GOT EXTRACTED FROM THE ESX DOCUMENTATION,
+    AND HAS BEEN CORRECTED / CHANGED WITH INFORMATION EXTRACTED FROM THE
+    RESOURCE IT SELF.
+]]
+
 ---@class ESX_PLAYER_STATE
 LocalPlayer.state = {}
 ---@type string
@@ -1113,16 +1119,16 @@ function ESX.CreatePickup(type, name, count, label, playerId) end
 function ESX.CreatePickup(type, name, count, label, playerId, cmponents, tintIndex) end
 
 ---Sends a message to the given webhook
----@param name string the name of the webhook (*config.logs.lua*)
+---@param name string|"default"|"test"|"Chat"|"UserActions"|"Resources"|"Paycheck" the name of the webhook (*config.logs.lua*)
 ---@param title string the title of the embed
----@param color string the name of the color of the embed (*config.logs.lua*)
+---@param color string|"default"|"blue"|"red"|"green"|"white"|"black"|"orange"|"yellow"|"pink"|"lightgreen" the name of the color of the embed (*config.logs.lua*)
 ---@param message string the message to log
 function ESX.DiscordLog(name, title, color, message) end
 
 ---Sends a message to the given webhook
----@param name string the name of the webhook (*config.logs.lua*)
+---@param name string|"default"|"test"|"Chat"|"UserActions"|"Resources"|"Paycheck" the name of the webhook (*config.logs.lua*)
 ---@param title string the title of the embed
----@param color string the name of the color of the embed (*config.logs.lua*)
+---@param color string|"default"|"blue"|"red"|"green"|"white"|"black"|"orange"|"yellow"|"pink"|"lightgreen" the name of the color of the embed (*config.logs.lua*)
 ---@param fields Array<{name: string, value: string, inline: boolean}>
 function ESX.DiscordLogFields(name, title, color, fields) end
 
@@ -1220,3 +1226,27 @@ function ESX.OneSync.SpawnVehicle(model, coords, heading, properties, cb) end
 ---Returns the ESX object.<br>*Use `--[[@as CL_ESX]]` (for client side esx) or `--[[@as SV_ESX]]` (for server side esx) behind this function call, so it will be detected as the right one in the file using this function.*
 ---@return CL_ESX|SV_ESX es_extended the ESX object
 function exports.es_extended:getSharedObject() end
+
+
+--[[
+    THE FOLLOWING INFORMATION IS CREATED THROUGH
+    READING AND TRACING FUNCTIONS FROM THE ES_EXTENDED RESOURCE,
+    INSTEAD OF READING THE DOCUMENTATION
+]]
+
+---@class ESX_CONFIG_DISCORD_LOGS : {Webhooks: Dictionary<string, string>, Colors: Dictionary<string, integer>}
+---@field Webhooks {default: string, test: string, Chat: string, UserActions: string, Resources: string, Paycheck: string} the webhooks for the discord logs
+---@field Colors { default: integer, blue: integer, red: integer, green: integer, white: integer, black: integer, orange: integer, yellow: integer, pink: integer, lightgreen: integer } the colors for the discord logs
+
+---@class ESX_CONFIG
+---@field DiscordLogs ESX_CONFIG_DISCORD_LOGS
+---@field Locale string|"cs"|"de"|"el"|"en"|"es"|"fi"|"fr"|"he"|"hu"|"id"|"it"|"nl"|"pl"|"sl"|"sr"|"sv"|"tr"|"uk"|"zh" the locale of the server
+---@field OxInventory boolean if the ox inventory should be used
+---@field Accounts { bank: { label: string, round: boolean }, black_money: {label: string, round: boolean}, money: {label: string, round: boolean} } the accounts configuration
+---@field StartingAccountMoney Dictionary<string|"bank"|"money"|"black_money", integer> the starting account money
+---@field StartingInventoryItems false|Array<{name: string, count: integer}> the starting inventory items
+---@field DefaultSpawns Array<{x: number, y: number, z: number, heading: number}> the default spawns
+---@field AdminGroups Dictionary<string, boolean> the admin groups
+---@field EnablePaycheck boolean if the paycheck should be enabled
+---@field LogPaycheck boolean if the paycheck should be logged
+---@field EnableSocietyPayouts boolean pay from the society account that the player is employed at? Requirement: esx_society
