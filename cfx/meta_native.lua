@@ -545,10 +545,6 @@ function SetVehicleBoostActive(vehicle, active) end
 ---@param p8 boolean
 function ApplyForceToEntityCenterOfMass(vehicle, type, x, y, z, p5, p6, p7, p8) end
 
----Returns the height of the vehicle above ground.
----@param vehicle vehicle
-function GetEntityHeightAboveGround(vehicle) end
-
 ---Checks if the vehicle is touching ground with all vehicles
 ---@param vehicle vehicle
 ---@return boolean wehicleOnAllWheels
