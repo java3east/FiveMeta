@@ -380,7 +380,6 @@ function RegisterNetEvent(event, func) end
 ---@field Math ESX_MATH
 ESX = {}
 
-
 ---This function dumps the given table to a readable string with a tree structure.
 ---@param table table the table to dump
 ---@return string the dumped table
@@ -767,10 +766,10 @@ function ESX.UI.Menu.IsOpen(type, namespace, name) end
 ---@param namespace string the namespace of the menu (usually the resource name)
 ---@param name string the name of the menu
 ---@param data { title: string, align: string|"top-left"|"bottom-left"|"bottom-right"|"top-right", elements: Array<{label: string}> } 
----@param submit fun(data: any, menu: any) a callback function that will be called when the menu is submitted
----@param cancel fun(menu: any) a callback function that will be called when the menu is canceled
----@param chage fun(data: any, menu: any) a callback function that will be called when the menu is changed
----@param close fun(menu: any) a callback function that will be called when the menu is closed
+---@param submit fun(data: any, menu: any)? a callback function that will be called when the menu is submitted
+---@param cancel fun(data:any, menu: any)? a callback function that will be called when the menu is canceled
+---@param chage fun(data: any, menu: any)? a callback function that will be called when the menu is changed
+---@param close fun(menu: any)? a callback function that will be called when the menu is closed
 function ESX.UI.Menu.Open(type, namespace, name, data, submit, cancel, chage, close) end
 
 ---This function registers a menu type.
@@ -832,7 +831,7 @@ function Player.clearMeta(index) end
 
 ---Returns the set metadata for the given index and subindex of the players metadata.
 ---@param index string the index of the metadata
----@param subIndex string the subindex of the metadata
+---@param subIndex string? the subindex of the metadata
 ---@return any meta the metadata
 function Player.getMeta(index, subIndex) end
 
@@ -970,9 +969,9 @@ function Player.removeWeaponComponent(weaponName, weaponComponent) end
 
 ---This function sets the players meta.
 ---@param index string the index of the meta
----@param subIndex string the subindex of the meta
 ---@param meta any the meta to set
-function Player.setMeta(index, subIndex, meta) end
+---@param subIndex string? the subindex of the meta
+function Player.setMeta(index, meta, subIndex) end
 
 ---This function sets the amount of money the player has on the given account.
 ---@param account string|"bank"|"money"|"black_money" the account to set the money for
@@ -1138,8 +1137,8 @@ function ESX.DiscordLogFields(name, title, color, fields) end
 function ESX.DoseJobExist(job, grade) end
 
 ---Returns a list of extended players matching the required argument.
----@param argument string|"group"|"job" the type of filter
----@param value string the group or job the player has to have to be included in the list (e.g. "police"|"user")
+---@param argument string|"group"|"job"? the type of filter
+---@param value string? the group or job the player has to have to be included in the list (e.g. "police"|"user")
 ---@return Array<ESX_PLAYER> players the found players for the given argument
 function ESX.GetExtendedPlayers(argument, value) end
 

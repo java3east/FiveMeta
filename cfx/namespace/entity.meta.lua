@@ -1,4 +1,4 @@
----@meta
+---@meta ENTITY
 
 
 --[[ ======================================== ]]--
@@ -149,7 +149,7 @@ function IsEntityInAir(entity) end
 ---Sets the entities alpha level.
 ---@param entity entity the entity to set the alpha level of
 ---@param alphaLevel integer the alpha level to set
----@param skin boolean Whether or not to change the alpha of the entity's skin.
+---@param skin boolean? Whether or not to change the alpha of the entity's skin.
 function SetEntityAlpha(entity, alphaLevel, skin) end
 
 ---**CLIENT**<br>
@@ -195,6 +195,41 @@ function SetEntityNoCollisionEntity(entity1, entity2, thisFrame) end
 ---@param entity entity the traffic light to override
 ---@param state integer the state to set the traffic light to (0 = green, 1 = red, 2 = yellow, 3 = reset)
 function SetEntityTrafficlightOverride(entity, state) end
+
+---**CLIENT**<br>
+---Returns the proof flags of the given entity.
+---@nodiscard
+---@param entity entity the entity to get the proof flags of
+---@return boolean retval weather the function was successful
+---@return boolean bulletProof whether the entity is bullet proof
+---@return boolean fireProof whether the entity is fire proof
+---@return boolean explosionProof whether the entity is explosion proof
+---@return boolean collisionProof whether the entity is collision proof
+---@return boolean meleeProof whether the entity is melee proof
+---@return boolean steamProof whether the entity is steam proof
+---@return boolean p7 unknown
+---@return boolean drownProof whether the entity is drown proof
+function GetEntityProofs(entity) end
+
+---**CLIENT**<br>
+---Sets the proof flags of the given entity.
+---@param entity entity the entity to set the proof flags of
+---@param bulletProof boolean whether the entity is bullet proof
+---@param fireProof boolean whether the entity is fire proof
+---@param explosionProof boolean whether the entity is explosion proof
+---@param collisionProof boolean whether the entity is collision proof
+---@param meleeProof boolean whether the entity is melee proof
+---@param steamProof boolean whether the entity is steam proof
+---@param p7 boolean unknown
+---@param drownProof boolean whether the entity is drown proof
+function SetEntityProofs(entity, bulletProof, fireProof, explosionProof, collisionProof, meleeProof, steamProof, p7, drownProof) end
+
+---**CLIENT**<br>
+---Marks the entity as owned by this script.
+---@param entity entity the entity to mark as owned
+---@param scriptHostObject boolean if set to false, the entity will only be protected from despawning (locally).
+---@param bGrabFromOtherScript boolean true to set the entity owned by this script. (only works if this client has ownership of the entity)
+function SetEntityAsMissionEntity(entity, scriptHostObject, bGrabFromOtherScript) end
 
 --#endregion
 

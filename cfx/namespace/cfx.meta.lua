@@ -1,4 +1,4 @@
----@meta
+---@meta CFX
 
 
 --[[ ======================================== ]]--
@@ -117,6 +117,21 @@ function GetPedHairColor(ped) end
 ---@return integer highlightColor the hair highlight color
 function GetPedHairHighlightColor(ped) end
 
+---**CLIENT**<br>
+---Stops the loading screen NUI.
+function ShutdownLoadingScreenNui() end
+
+---**CLIENT**<br>
+---Sets whether or not the UI has focus and or a cursor.
+---@param hasFocus boolean whether the UI has focus
+---@param hasCursor boolean whether the UI has a cursor
+function SetNuiFocus(hasFocus, hasCursor) end
+
+---**CLIENT**<br>
+---Sets whether or not the normal game controls should still be active when the UI has focus.
+---@param keepInput boolean whether the normal game controls should still be active
+function SetNuiFocusKeepInput(keepInput) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
@@ -125,6 +140,56 @@ function GetPedHairHighlightColor(ped) end
 
 --#region **SERVER**
 
+---**SERVER**<br>
+---Creates a new entity.<br>
+---@nodiscard
+---@param pedType integer (unused 0)
+---@param modelHash hash the model hash for the entity
+---@param x number the X coordinate for the entity
+---@param y number the Y coordinate for the entity
+---@param z number the Z coordinate for the entity
+---@param heading number the heading for the entity
+---@param isNetwork boolean whether the entity is networked
+---@param bScriptHostPed boolean Whether to register the ped as pinned to the script host in the R* network model.
+---@return ped ped the entity handle
+function CreatePed(pedType, modelHash, x, y, z, heading, isNetwork, bScriptHostPed) end
 
+---@class HttpRequest
+---@field address string The IP address of the request sender.
+---@field headers Dictionary<string, string>  The headers sent with the request.
+---@field method string The request method.
+---@field path string The path to where the request was sent.
+---@field setDataHandler fun(handler: fun(data: string))  Sets the handler for when a data body is passed with the request. Additionally you can pass the 'binary' argument to receive a BufferArray in JavaScript or System.Byte[] in C# (has no effect in Lua).
+---@field setCancelHandler fun(handler: fun()) Sets the handler for when the request is cancelled.
+
+---@class HttpResponse
+---@field writeHead fun(code: integer, headers: Dictionary<string, string>|string[]?)  Sets the status code & headers of the response. Can be only called once and won't work if called after running other response functions.
+---@field write fun(data: string) Writes to the response body without sending it. Can be called multiple times.
+---@field send fun(data: string?) Writes to the response body and then sends it along with the status code & headers, finishing the request.
+
+
+---**SERVER**<br>
+---Sets the handler for HTTP requests made to the executing resource.<br>
+---Example request URL: http://localhost:30120/http-test/ping - this request will be sent to the http-test resource with the /ping path.
+---@param handler fun(req: HttpRequest, res: HttpResponse) The handler function to call when a request is made.
+function SetHttpHandler(handler) end
+
+---**SERVER**<br>
+---@nodiscard
+---Returns an array of all known vehicle handles.
+---@return vehicle[] vehicles an array of vehicle handles
+function GetAllVehicles() end
+
+---**SERVER**<br>
+---Creates a new vehicle on the server (better for networking than CreateVehicle).<br>
+---@nodiscard
+---@param modelHash hash the model hash for the vehicle
+---@param type string|"automobile"|"bike"|"boat"|"heli"|"plane"|"submarine"|"trailer"|"train" the type of the vehicle
+---@param x number the X coordinate for the vehicle
+---@param y number the Y coordinate for the vehicle
+---@param z number the Z coordinate for the vehicle
+---@param heading number the heading for the vehicle
+---@return vehicle vehicle the vehicle handle
+function CreateVehicleServerSetter(modelHash, type, x, y, z, heading) end
 
 --#endregion

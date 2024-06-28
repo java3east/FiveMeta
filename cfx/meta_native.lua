@@ -386,7 +386,11 @@ function TriggerEvent(name, ...) end
 ---@param x number
 ---@param y number
 ---@param z number
-function SetEntityCoords(ped, x, y, z) end
+---@param alive boolean?
+---@param deadFlag boolean?
+---@param ragdollFlag boolean?
+---@param clearArea boolean?
+function SetEntityCoords(ped, x, y, z, alive, deadFlag, ragdollFlag, clearArea) end
 
 ---Returns the dimension the player is currently in.
 ---@param player integer the players server id.
@@ -671,7 +675,7 @@ function SetCamRot(cam, x, y, z, p4) end
 
 ---Destroys the given camera
 ---@param cam cam the camera to destroy
----@param p1 boolean param indicates whether the cam should be destroyed if it belongs to the calling script. 
+---@param p1 boolean? param indicates whether the cam should be destroyed if it belongs to the calling script. 
 function DestroyCam(cam, p1) end
 
 ---Checks if the script is running server-side

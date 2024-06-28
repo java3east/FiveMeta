@@ -65,6 +65,9 @@ files = nil
 ---@type fun(dependency: string)
 dependency = nil
 
+---@type fun(resource: string)
+provide = nil
+
 ---Local player object
 LocalPlayer = {}
 

@@ -1,4 +1,4 @@
----@meta
+---@meta PED
 
 
 --[[ ======================================== ]]--
@@ -23,6 +23,48 @@
 ---@param boneID integer the bone id to get the index of
 ---@return integer boneIndex the bone index
 function GetPedBoneIndex(ped, boneID) end
+
+---**CLIENT**<br>
+---Sets the maximum time the ped can stay underwater.
+---@param ped ped the ped to get the max time underwater from
+---@param time number the maximum time the ped can stay underwater
+function SetPedMaxTimeUnderwater(ped, time) end
+
+---**CLIENT**<br>
+---Puts a prop on the specified ped.
+---@param ped ped the ped to put the prop on
+---@param propIndex integer the prop index
+---@param drawableId integer the drawable id
+---@param textureId integer the texture id
+---@param attach boolean whether to attach the prop to the ped
+function SetPedPropIndex(ped, propIndex, drawableId, textureId, attach) end
+
+---**CLIENT**<br>
+---Removes the given prop from the specified ped.
+---@param ped ped the ped to remove the prop from
+---@param propIndex integer the prop index
+function ClearPedProp(ped, propIndex) end
+
+---**CLIENT**<br>
+---Returns the texture index of the prop on the specified ped.
+---@nodiscard
+---@param ped ped the ped to get the prop texture index from
+---@param propIndex integer the prop index
+---@return integer textureIndex the texture index of the prop
+function GetPedPropTextureIndex(ped, propIndex) end
+
+---**CLIENT**<br>
+---Returns the prop index of the specified ped.
+---@nodiscard
+---@param ped ped the ped to get the prop index from
+---@param propIndex integer the prop index
+function GetPedPropIndex(ped, propIndex) end
+
+---**CLIENT**<br>
+---Sets wether or not the ped should react to temporary events (like explosions, beeing hit by a car, etc).
+---@param ped ped the ped to set the blocking of non temporary events for
+---@param toggle boolean whether to block non temporary events
+function SetBlockingOfNonTemporaryEvents(ped, toggle) end
 
 --#endregion
 
