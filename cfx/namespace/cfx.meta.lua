@@ -192,4 +192,24 @@ function GetAllVehicles() end
 ---@return vehicle vehicle the vehicle handle
 function CreateVehicleServerSetter(modelHash, type, x, y, z, heading) end
 
+---**SERVER**<br>
+---Checks if the given player exists.
+---@nodiscard
+---@param source player the player server id
+---@return boolean exists true if the player exists, false otherwise
+function DoesPlayerExist(source) end
+
+---**SERVER**<br>
+---Returns the numberplate text of the given vehicle.
+---@nodiscard
+---@param vehicle vehicle the vehicle to get the numberplate text from
+---@return string plateText the numberplate text
+function GetVehicleNumberPlateText(vehicle) end
+
+---**SERVER**<br>
+---Sets the numberplate text of the given vehicle.
+---@param vehicle vehicle the vehicle to set the numberplate text of
+---@param plateText string the numberplate text
+function SetVehicleNumberPlateText(vehicle, plateText) end
+
 --#endregion

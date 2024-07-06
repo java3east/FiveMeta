@@ -17,25 +17,11 @@
 --#region **CLIENT**
 
 ---**CLIENT**<br>
----Creates a blip with a radius for the specified coordinates
+---Returns whether the specified pad index is using the keyboard.
 ---@nodiscard
----@param x number The x coordinate
----@param y number The y coordinate
----@param z number The z coordinate
----@param radius number The radius of the blip
----@return blip blip The blip handle
-function AddBlipForRadius(x, y, z, radius) end
-
----**CLIENT**<br>
----Sets the alpha of the blip
----@param blip blip The blip handle
----@param alpha number The alpha value
-function SetBlipAlpha(blip, alpha) end
-
----**CLIENT**<br>
----Disable / Enable the radar
----@param bool boolean The state of the radar
-function DisplayRadar(bool) end
+---@param padIndex integer the pad index to check
+---@return boolean isUsingKeyboard true if the pad is using the keyboard
+function IsUsingKeyboard(padIndex) end
 
 --#endregion
 

@@ -1222,6 +1222,8 @@ function ESX.OneSync.SpawnPedInVehicle(model, vehicle, seat, cb) end
 ---@param cb fun(vehicleNetId: integer)? the function to call after the vehicle has spawned.
 function ESX.OneSync.SpawnVehicle(model, coords, heading, properties, cb) end
 
+exports.es_extended = {}
+
 ---Returns the ESX object.<br>*Use `--[[@as CL_ESX]]` (for client side esx) or `--[[@as SV_ESX]]` (for server side esx) behind this function call, so it will be detected as the right one in the file using this function.*
 ---@return CL_ESX|SV_ESX es_extended the ESX object
 function exports.es_extended:getSharedObject() end
