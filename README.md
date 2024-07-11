@@ -1,4 +1,4 @@
-# FiveMeata
+# FiveMeta
 
 ## Description
 The objective of this resource is easier resource development, by providing meta files which can be used together with the LLS (Lua Language Server) to provide better intellisense and code completion.
