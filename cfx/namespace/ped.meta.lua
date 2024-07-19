@@ -66,6 +66,13 @@ function GetPedPropIndex(ped, propIndex) end
 ---@param toggle boolean whether to block non temporary events
 function SetBlockingOfNonTemporaryEvents(ped, toggle) end
 
+---**CLIENT**<br>
+---Overrides facial idle animanation for the ped
+---@param ped ped the ped to override animation on
+---@param animName string the animation name
+---@param animDict integer the animation dictionary (unused by game, value need to be 0 for native to work)
+function SetFacialIdleAnimOverride(ped, animName, animDict)
+
 --#endregion
 
 ---[[ ======================================== ]]--
