@@ -33,6 +33,15 @@ function RemoveStateBagChangeHandler(cookie) end
 ---@return boolean true if the entity's position is frozen, false otherwise
 function IsEntityPositionFrozen(entity) end
 
+---**SHARED**<br>
+---Returns the value of the requested metadata key for the given resource.<br>
+---@nodiscard
+---@param resource string the resource name
+---@param key string the metadata key
+---@param index integer the index of the metadata key
+---@return string value the value of the metadata key
+function GetResourceMetadata(resource, key, index) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
