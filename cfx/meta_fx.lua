@@ -65,6 +65,9 @@ files = nil
 ---@type fun(dependency: string)
 dependency = nil
 
+---@type fun(dependencies: Array<string>)
+dependencies = nil
+
 ---@type fun(resource: string)
 provide = nil
 

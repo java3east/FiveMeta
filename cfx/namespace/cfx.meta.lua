@@ -141,6 +141,11 @@ function SetNuiFocus(hasFocus, hasCursor) end
 ---@param keepInput boolean whether the normal game controls should still be active
 function SetNuiFocusKeepInput(keepInput) end
 
+---**CLIENT**<br>
+---Runs a command as this player.
+---@param command string the command to run
+function ExecuteCommand(command) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
@@ -220,5 +225,10 @@ function GetVehicleNumberPlateText(vehicle) end
 ---@param vehicle vehicle the vehicle to set the numberplate text of
 ---@param plateText string the numberplate text
 function SetVehicleNumberPlateText(vehicle, plateText) end
+
+---**SERVER**<br>
+---Runs a command as the server console.
+---@param command string the command to run
+function ExecuteCommand(command) end
 
 --#endregion

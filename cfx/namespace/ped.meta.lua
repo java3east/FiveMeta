@@ -71,7 +71,7 @@ function SetBlockingOfNonTemporaryEvents(ped, toggle) end
 ---@param ped ped the ped to override animation on
 ---@param animName string the animation name
 ---@param animDict integer the animation dictionary (unused by game, value need to be 0 for native to work)
-function SetFacialIdleAnimOverride(ped, animName, animDict)
+function SetFacialIdleAnimOverride(ped, animName, animDict) end
 
 --#endregion
 
