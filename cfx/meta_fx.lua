@@ -71,6 +71,9 @@ dependencies = nil
 ---@type fun(resource: string)
 provide = nil
 
+---@param str string
+lua54 = function(str) end
+
 ---Local player object
 LocalPlayer = {}
 
