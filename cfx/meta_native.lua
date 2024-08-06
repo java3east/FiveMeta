@@ -562,9 +562,9 @@ function RegisterCommand(name, func, restricted) end
 
 ---Returns the players identifier
 ---@param player integer
----@param identifiertype 'license'|'steam'|string
+---@param identifierType 'license'|'steam'|'xbl'|'ip'|'discord'|'live'|'license2'|string
 ---@return string identifier
-function GetPlayerIdentifierByType(player, identifiertype) end
+function GetPlayerIdentifierByType(player, identifierType) end
 
 ---Register a new key mapping.
 ---@param command string
