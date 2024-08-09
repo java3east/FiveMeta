@@ -231,4 +231,16 @@ function SetVehicleNumberPlateText(vehicle, plateText) end
 ---@param command string the command to run
 function ExecuteCommand(command) end
 
+---**SERVER**<br>
+---Enables / disables the population of a routing bucket.<br>
+---@param bucketId integer the pucket id (also known as dimension)
+---@param mode boolean true to enable the population, false to disable
+function SetRoutingBucketPopulationEnabled(bucketId, mode) end
+
+---**SERVER**<br>
+---Stops the given resource.
+---@param resource string the resource name
+---@return boolean success some boolean (success I guess?)
+function StopResource(resource) end
+
 --#endregion

@@ -28,6 +28,11 @@ function RequestModel(model) end
 ---@return boolean hasModelLoaded true if the model has been loaded, false otherwise
 function HasModelLoaded(model) end
 
+---**CLIENT**<br>
+---Marks the model as no longer needed and unloads it from memory.
+---@param model hash the model hash to unload
+function SetModelAsNoLongerNeeded(model) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

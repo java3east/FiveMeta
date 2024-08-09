@@ -31,6 +31,13 @@ function GetEntityPlayerIsFreeAimingAt(player) end
 ---@return entity entity the entity the player is targeting
 function GetPlayerTargetEntity(player) end
 
+---**CLIENT**<br>
+---Sets the model for the player. This will create a new ped for the player and remove the old one.<br>
+---*(The return value of `PlayerPedId()` will change after calling this function.*
+---@param player integer the player id of the player to set the model for (not the server id, but the player id e.g. `PlayerId()`)
+---@param model hash the model has for the model to load.
+function SetPlayerModel(player, model) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

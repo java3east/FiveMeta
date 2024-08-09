@@ -80,3 +80,6 @@ LocalPlayer = {}
 ---Local player statebags
 ---@class PLAYER_STATE
 LocalPlayer.state = {}
+
+---@class GlobalState
+GlobalState = {}

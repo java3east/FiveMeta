@@ -569,9 +569,9 @@ function GetPlayerIdentifierByType(player, identifierType) end
 ---Register a new key mapping.
 ---@param command string
 ---@param description string
----@param mapper integer
+---@param mapper string
 ---@param key string
-function ReigsterKeyMapping(command, description, mapper, key) end
+function RegisterKeyMapping(command, description, mapper, key) end
 
 ---Sets how much boost the vehicle has left.
 ---@param vehicle vehicle
