@@ -219,6 +219,8 @@ exports['qb-core'].GetCoreObject = function(self) end
 
 
 ---@class CLIENT.QBCore.CoreObject
+---@field Functions CLIENT.QBCore.CoreObject.Functions
+
 ---@class CLIENT.QBCore.CoreObject.Functions
 local CQCF = {}
 
@@ -553,4 +555,3 @@ function CQCF.GetGroundHash(entity) end
 
 ---@class SERVER.QBCore
 ---@class SERVER.QBCore.CoreObject
-
