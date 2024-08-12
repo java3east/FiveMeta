@@ -32,6 +32,10 @@ function SeethroughSetHeatscale(index, heatscale) end
 ---@param toggle boolean true to activate see-through, false to deactivate
 function SetSeeThrough(toggle) end
 
+---**CLIENT**<br>
+---Resets the screen's draw-origin which was changed by the function SET_DRAW_ORIGIN back to x=0, y=0. See SET_DRAW_ORIGIN for further information.
+function ClearDrawOrigin() end
+
 --#endregion
 
 ---[[ ======================================== ]]--

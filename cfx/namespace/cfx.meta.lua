@@ -10,8 +10,8 @@
 ---**SHARED**<br>
 ---Adds a handler for changes to a state bag.<br>
 ---*example:* [FiveM Docs](https://docs.fivem.net/natives/?_0x5BA35AAF)
----@param keyFilter string The key to check for, or null for no filter.
----@param bagFilter string The bag ID to check for such as entity:65535, or null for no filter.
+---@param keyFilter string? The key to check for, or null for no filter.
+---@param bagFilter string? The bag ID to check for such as entity:65535, or null for no filter.
 ---@param handler fun(bagName: string, key: string, value: any, reserved: number, replicated: boolean) 
 ---* `bagName`: The internal bag ID for the state bag which changed. This is usually player:Source, entity:NetID or localEntity:Handle.<br>
 ---* `key`: The changed key<br>

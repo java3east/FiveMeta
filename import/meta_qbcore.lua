@@ -29,13 +29,17 @@
     to save the users of this file some time and confusion.
 ]]
 
+
 ---@class EXPORTS.QBCore
-exports['qb-core'] = {}
+local qbExports = {}
+
+
+exports['qb-core'] = qbExports
 
 ---Returns the core object of the QBCore resource.
 ---@param self EXPORTS.QBCore The object reference
 ---@return CLIENT.QBCore.CoreObject|SERVER.QBCore.CoreObject coreObject the core object
-exports['qb-core'].GetCoreObject = function(self) end
+function qbExports:GetCoreObject() end
 
 
 
@@ -212,6 +216,77 @@ exports['qb-core'].GetCoreObject = function(self) end
 
 
 
+---Displays a text on the screen
+---@param name "qb-core:client:DrawText"
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function TriggerEvent(name, text, position) end
+
+---Changes the text at the given position on the screen
+---@param name "qb-core:client:ChangeText"
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function TriggerEvent(name, text, position) end
+
+---Hides the text displayed on the hud (text beeing displayed with 'qb-core:client:DrawText')
+---@param name "qb-core:client:HideText"
+function TriggerEvent(name) end
+
+---no idea what it dose
+---@param name "qb-core:client:KeyPressed"
+function TriggerEvent(name) end
+
+
+
+---Displays a text on the screen
+---@param name "qb-core:client:DrawText"
+---@param player player
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function TriggerClientEvent(name, player, text, position) end
+
+---Changes the text at the given position on the screen
+---@param name "qb-core:client:ChangeText"
+---@param player player
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function TriggerClientEvent(name, player, text, position) end
+
+---Hides the text displayed on the hud (text beeing displayed with 'qb-core:client:DrawText')
+---@param name "qb-core:client:HideText"
+---@param player player
+function TriggerClientEvent(name, player) end
+
+---no idea what it dose
+---@param name "qb-core:client:KeyPressed"
+---@param player player
+function TriggerClientEvent(name, player) end
+
+
+
+
+---Displays 3d text at the given coords
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function qbExports:DrawText(text, position) end
+
+---Changes the text at the given position on the screen
+---@param text string the text
+---@param position "left" | "top" | "right" | "bottom" the position of the text
+function qbExports:ChangeText(text, position) end
+
+---Hides the text displayed on the hud (text beeing displayed with 'qb-core:client:DrawText')
+function qbExports:HideText() end
+
+---no idea what it dose
+function qbExports:KeyPressed() end
+
+
+
+
+
+
+
 ---@class CLIENT.QBCore
 
 
@@ -220,6 +295,8 @@ exports['qb-core'].GetCoreObject = function(self) end
 
 ---@class CLIENT.QBCore.CoreObject
 ---@field Functions CLIENT.QBCore.CoreObject.Functions
+---@field Config SHARED.QBCore.Config
+---@field Shared SHARED.QBCore.Shared
 
 ---@class CLIENT.QBCore.CoreObject.Functions
 local CQCF = {}
@@ -553,5 +630,232 @@ function CQCF.GetGroundZCoord(coords) end
 ---@return boolean retval
 function CQCF.GetGroundHash(entity) end
 
+---@class PLAYER_SATE
+---@field isLoggedIn boolean whether or not the player is logged in
+LocalPlayer.state = {}
+
+
+
 ---@class SERVER.QBCore
 ---@class SERVER.QBCore.CoreObject
+
+
+
+
+
+---@class SHARED.QBCore.Config
+---@field MaxPlayers integer the maximum amount of players the server can have
+---@field DefaultSpawn vector4 the default spawn location for players
+---@field UpdateInterval integer player update interval in minutes
+---@field StatusInterval integer hunger/thirst update interval in milliseconds
+---@field Player SHARED.QBCore.Config.Player
+---@field Server SHARED.QBCore.Config.Server
+---@field Commands SHARED.QBCore.Config.Commands
+---@field Notify SHARED.QBCore.Config.Notify
+
+---@class SHARED.QBCore.Config.Money.MoneyTypes : {[string]: integer}
+---@field cash integer start cash
+---@field bank integer start bank
+---@field crypto integer start crypto
+
+---@class SHARED.QBCore.Config.Money
+---@field MoneyTypes SHARED.QBCore.Config.Money.MoneyTypes
+---@field DontAllowMinus string[] the money types that are not allowed to go below 0
+---@field PayCheckTimeOut integer the amount of minutes between two paychecks
+---@field PayCheckSociety boolean whether or not the paycheck should be payed by the society
+
+---@class SHARED.QBCore.Config.Player
+---@field HungerRate number rate at wich the hunger should decrease
+---@field ThirstRate number rate at wich the thirst should decrease
+---@field Bloodtypes string[] the bloodtypes that are allowed
+---@field PlayerDefaults SHARED.QBCore.Config.Player.PlayerDefaults
+
+---@class SHARED.QBCore.Config.Player.PlayerDefaults
+---@field citizenid fun() : string creates a new citizen id
+---@field cid integer 0 the default citizen id
+---@field money fun() : SHARED.QBCore.Config.Money.MoneyTypes creates a new money object
+---@field optin boolean don't know what it dose
+---@field charinfo SHARED.QBCore.Config.Player.PlayerDefaults.CharInfo the default char information
+---@field job SHARED.QBCore.Config.Player.PlayerDefaults.Job the default job information
+---@field gang SHARED.QBCore.Config.Player.PlayerDefaults.Gang the default gang information
+---@field metadata SHARED.QBCore.Config.Player.PlayerDefaults.Metadata the default metadata information
+---@field position vector4
+---@field items table
+
+---@class SHARED.QBCore.Config.Player.PlayerDefaults.CharInfo
+---@field firstname string
+---@field lastname string
+---@field birthdate string
+---@field gender integer
+---@field nationality string
+---@field phone fun() : string creates a new phone number
+---@field account fun() : string creates a new account number
+
+---@class SHARED.QBCore.Config.Player.PlayerDefaults.Job
+---@field name string
+---@field label string
+---@field payment integer
+---@field type integer
+---@field onduty boolean
+---@field isboss boolean
+---@field grade {name: string, level: integer}
+
+---@class SHARED.QBCore.Config.Player.PlayerDefaults.Gang
+---@field name string
+---@field label string
+---@field isboss boolean
+---@field grade {name: string, level: integer}
+
+---@class SHARED.QBCore.Config.Player.PlayerDefaults.Metadata
+---@field hunger integer
+---@field thirst integer
+---@field stress integer
+---@field isdead boolean
+---@field inlaststand boolean
+---@field armor integer
+---@field ishandcuffed boolean
+---@field tracker boolean
+---@field injail integer
+---@field jailitems table how exaclty the information is saved is not clear
+---@field status table how exaclty the information is saved is not clear
+---@field phone table how exaclty the information is saved is not clear
+---@field rep table how exaclty the information is saved is not clear
+---@field currentapartment nil no more information about this
+---@field bloodtype fun():string returns a random blood type
+---@field fingerprint fun():string returns a random fingerprint
+---@field walletid fun():string returns a random wallet id
+---@field criminalrecord {hasRecord: boolean, date: nil}
+---@field licenses {driver: boolean, business: boolean, weapon: boolean}
+---@field inside {house: nil, apartment: {apartmentType: nil, apartmentId: nil}}
+---@field phonedata {SerialNumber: fun():string, InstalledApps: table}
+
+---@class SHARED.QBCore.Config.Server
+---@field Closed boolean no one will be able to join the server (except with special permissions)
+---@field ClosedReason string reason why the server is closed
+---@field Uptime integer the time the server is running (no idea what the unit is)
+---@field Whitelist boolean whether or not the server is whitelisted
+---@field WhitelistPermission string the permission needed to join the server
+---@field PVP boolean whether or not pvp is enabled
+---@field Discord string the discord invite link
+---@field CheckDuplicateLicense boolean whether or not the server should check for duplicate licenses
+---@field Permissions string[] (default: {'god', 'admin', 'mod'})
+
+---@class SHARED.QBCore.Config.Commands
+---@field OOCColor {[1]: integer, [2]: integer, [3]: integer} rgb color for the ooc chat
+
+---@class SHARED.QBCore.Config.Notify
+---@field NotificationStyling {group: boolean, position: 'top-left'|'top-right'|'bottom-left'|'bottom-right'|'top'|'bottom'|'left'|'right'|'center', progress: boolean}
+---@field VariantDefinitions Dictionary<string, {classes: string, icon: string}>
+
+
+
+---@class SHARED.QBCore.Shared
+---@field Gangs Dictionary<string, SHARED.QBCore.Shared.Gang>
+---@field Items Dictionary<string, SHARED.QBCore.Shared.Item>
+---@field ForceJobDefaultDutyAtLogin boolean whether or not the player should be put on duty / not on duty when joining
+---@field Jobs Dictionary<string, SHARED.QBCore.Job>
+---@field Locations SHARED.QBCore.Locations
+---@field StarterItems Dictionary<string, {amount: integer, item: string}> key: the item name
+---@field MaleNoGloves Dictionary<integer, boolean>
+---@field FemaleNoGloves Dictionary<integer, boolean>
+---@field Vehicles SHARED.QBCore.Shared.Vehicle[]
+---@field weapons Dictionary<string, SHARED.QBCore.Shared.Weapon> key: the weapon name
+local QBS = {}
+
+---@class SHARED.QBCore.Shared.Gang
+---@field label string
+---@field grades Dictionary<string, {name: string, isboss: boolean?}> key: the grade level as string
+
+---@class SHARED.QBCore.Shared.Item
+---@field name string
+---@field label string
+---@field weight integer
+---@field type string
+---@field ammotype 'AMMO_PISTOL' | 'AMMO_SMG' | 'AMMO_SHOTGUN '| 'AMMO_RIFLE' | 'AMMO_MG' | 'AMMO_SNIPER' | 'AMMO_PETROLCAN'?
+---@field image string
+---@field unique boolean
+---@field usable boolean
+---@field shouldClose boolean
+---@field description string
+
+
+---@class SHARED.QBCore.Job
+---@field label string the label of the job
+---@field defaultDuty boolean whether or not the player should be on duty by default
+---@field offDutyPay boolean whether or not the player should be payed while off duty
+---@field grades Dictionary<string, SHARED.QBCore.JobGrade> the grades of the job (key: the grade level as string)
+
+---@class SHARED.QBCore.JobGrade
+---@field name string the name of the grade
+---@field payment integer the payment of the grade
+
+
+---@class SHARED.QBCore.Locations : {[string]: vector4}
+
+---Returns a random string with the given length
+---@nodiscard
+---@param length integer
+---@return string randomStr the random string
+function QBS.RandomStr(length) end
+
+---Returns a random string, just containing numbers, with the given length
+---@nodiscard
+---@param length integer
+---@return string randomStr the random string
+function QBS.RandomInt(length) end
+
+---Splits the given string at the given delimiter
+---@nodiscard
+---@param str string
+---@param delimiter string
+---@return Array<string> parts the parts of the string
+function QBS.SplitStr(str, delimiter) end
+
+---Trims the given string
+---@nodiscard
+---@param value string
+---@return string trimmedValue the trimmed string
+function QBS.Trim(value) end
+
+---Sets the first letter of the given string to uppercase
+---@nodiscard
+---@param str string
+---@return string newStr the string with the first letter in uppercase
+function QBS.FirstToUpper(str) end
+
+---Rounds the given number to the given number of decimals
+---@nodiscard
+---@param value number the number to round
+---@param numDecimals integer the amount of decimals
+---@return number roundedValue the rounded number
+function QBS.Round(value, numDecimals) end
+
+---Changes the given vehicle extra
+---@param vehicle vehicle
+---@param extra integer
+---@param enable boolean
+function QBS.ChangeVehicleExtra(vehicle, extra, enable) end
+
+---Sets the default extras for the given vehicle<br>
+---*NOTE:
+---This clears any existing extras before applying the new ones*
+---@param vehicle vehicle
+---@param config {[integer]: boolean}
+function QBS.SetDefaultVehicleExtras(vehicle, config) end
+
+
+---@class SHARED.QBCore.Shared.Vehicle
+---@field model string the model name
+---@field name string the name (display name)
+---@field brand string the brand of the vehicle
+---@field price integer the price of the vehicle
+---@field category string the category of the vehicle
+---@field type string the type of the vehicle
+---@field shop string | string[] the shop the vehicle is available in
+
+---@class SHARED.QBCore.Shared.Weapon
+---@field name string the name of the weapon
+---@field label string the label of the weapon
+---@field weapontype string the type of the weapon
+---@field ammoType string the ammo type of the weapon
+---@field damagereason string the damage reason of the weapon
