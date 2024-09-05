@@ -73,6 +73,25 @@ function SetBlockingOfNonTemporaryEvents(ped, toggle) end
 ---@param animDict integer the animation dictionary (unused by game, value need to be 0 for native to work)
 function SetFacialIdleAnimOverride(ped, animName, animDict) end
 
+---**CLIENT**<br>
+---Sets the ped's amount of armor.
+---@param ped ped the ped to set the armor for
+---@param amount integer the amount of armor
+function SetPedArmour(ped, amount) end
+
+---**CLIENT**<br>
+---Adds a deocration to the specified ped. (e.g. tattoos)
+---@param ped ped the ped to add the decoration to
+---@param collection hash the collection of the decoration
+---@param overlay hash the overlay of the decoration
+function AddPedDecorationFromHashes(ped, collection, overlay) end
+
+---Returns whether the specified ped is male or female.
+---@nodiscard
+---@param ped ped the ped to check
+---@return boolean isMale whether the ped
+function IsPedMale(ped) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

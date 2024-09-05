@@ -243,4 +243,45 @@ function SetRoutingBucketPopulationEnabled(bucketId, mode) end
 ---@return boolean success some boolean (success I guess?)
 function StopResource(resource) end
 
+
+---**SERVER**<br>
+---Removes all weapons from the given ped.
+---@param ped ped the ped to remove the weapons from
+---@param p1 unknown? documentation states that this prameter is ignored, but who knows...
+function RemoveAllPedWeapons(ped, p1) end
+
+---**SERVER**<br>
+---Gives the given ped a weapon.
+---@param ped ped the ped to give the weapon to
+---@param weaponHash hash the weapon hash
+---@param ammoCount integer the ammo count
+---@param isHidden boolean whether the weapon is hidden
+---@param equipNow boolean whether to equip the weapon now
+function GiveWeaponToPed(ped, weaponHash, ammoCount, isHidden, equipNow) end
+
+---**SERVER**<br>
+---Gives the given ped a weapon component.
+---@param ped ped the ped to give the weapon component to
+---@param weaponHash hash the weapon hash
+---@param componentHash hash the component hash
+function GiveWeaponComponentToPed(ped, weaponHash, componentHash) end
+
+---**SERVER**<br>
+---Sets the ammo of the given ped's weapon.
+---@param ped ped the ped to set the ammo of
+---@param weaponHash hash the weapon hash
+function SetPedAmmo(ped, weaponHash, ammoCount) end
+
+---**SERVER**<br>
+---Creates a new object
+---@param modelHash hash
+---@param x number
+---@param y number
+---@param z number
+---@param isNetwork boolean?
+---@param netMissionEntity boolean?
+---@param doorFlag boolean?
+---@return object object
+function CreateObject(modelHash, x, y, z, isNetwork, netMissionEntity, doorFlag) end
+
 --#endregion

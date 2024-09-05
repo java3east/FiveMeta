@@ -784,6 +784,9 @@ function ESX.UI.Menu.RegisterType(type, open, close) end
 ---@class ESX_PLAYER
 local Player = {}
 
+---@type integer the player server id
+Player.source = 0
+
 ---This function adds money the the given account of the player.
 ---@param account string|"bank"|"money"|"black_money" the account to add the money to
 ---@param money integer the amount of money to add
@@ -903,6 +906,8 @@ function Player.getMissingAccounts(cb) end
 function Player.getMoney() end
 
 ---If you have ESX identity Installed, This will return the Character Name, If not, it will return the FiveM name.
+---@nodiscard
+---@return string name
 function Player.getName() end
 
 ---This functions returns the loadoutNum and a weapon object for the weapon if the player has it.
@@ -1029,8 +1034,8 @@ function Player.showHelpNotification(msg, thisFrame, beep, duration) end
 
 ---Shows a notification to the player.
 ---@param msg string the message to show
----@param type 'info'|'success'|'error' the type of the notification
----@param time integer the time to show the notification in milliseconds
+---@param type 'info'|'success'|'error'? the type of the notification
+---@param time integer? the time to show the notification in milliseconds
 function Player.showNotification(msg, type, time) end
 
 ---Triggers a client event on the player.

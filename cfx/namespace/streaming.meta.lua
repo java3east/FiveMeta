@@ -33,6 +33,17 @@ function HasModelLoaded(model) end
 ---@param model hash the model hash to unload
 function SetModelAsNoLongerNeeded(model) end
 
+---**CLIENT**<br>
+---Starts loading the requested anim dict
+---@param animDict string the anim dict to load
+function RequestAnimDict(animDict) end
+
+---**CLIENT**<br>
+---Returns whether the requested anim dict has been loaded
+---@nodiscard
+---@param animDict string the anim dict to check
+function HasAnimDictLoaded(animDict) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

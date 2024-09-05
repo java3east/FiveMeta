@@ -34,14 +34,89 @@
 local qbExports = {}
 
 
-exports['qb-core'] = qbExports
+---@type EXPORTS.QBCore | SERVER.QBCoreExports
+exports['qb-core'] = nil
 
 ---Returns the core object of the QBCore resource.
 ---@param self EXPORTS.QBCore The object reference
 ---@return CLIENT.QBCore.CoreObject|SERVER.QBCore.CoreObject coreObject the core object
 function qbExports:GetCoreObject() end
 
+---@class SERVER.QBCoreExports
+local sv_qbExports = {}
 
+---Adds a new function to the qb-core function table (QBCore.Functions.<name>)
+---@param name string the name of the function
+---@param handler fun(...) : ... the function to add
+function sv_qbExports:SetMethod(name, handler) end
+
+---Adds a new field to the qb-core object (QBCore.<field>)
+---@param name string
+---@param value any
+function sv_qbExports:SetField(name, value) end
+
+---Adds a new job to the shared object
+---@param name string
+---@param job SHARED.QBCore.Job
+function sv_qbExports:AddJob(name, job) end
+
+---Adds the given job s to the shared object
+---@param jobs Dictionary<string, SHARED.QBCore.Job>
+function sv_qbExports:AddJobs(jobs) end
+
+---Removes the job with the given name
+---@param name string the name of the job
+function sv_qbExports:RemoveJob(name) end
+
+---Replaces the current job in the shared object with the given data
+---@param name string the name of the job to replace
+---@param job SHARED.QBCore.Job the new job data
+function sv_qbExports:UpdateJob(name, job) end
+
+---Adds the given item
+---@param name string the name of the item
+---@param item SHARED.QBCore.Shared.Item
+function sv_qbExports:AddItem(name, item) end
+
+---Updates the given item
+---@param name string the name of the item to update
+---@param item SHARED.QBCore.Shared.Item the new item data
+function sv_qbExports:UpdateItem(name, item) end
+
+---Adds the given items
+---@param items Dictionary<string, SHARED.QBCore.Shared.Item>
+function sv_qbExports:AddItems(items) end
+
+---Removes the given item from the list of known items
+---@param name string the name of the item to remove
+function sv_qbExports:RemoveItem(name) end
+
+---Registers a new gang
+---@param name string the name of the gang
+---@param gang SHARED.QBCore.Shared.Gang
+function sv_qbExports:AddGang(name, gang) end
+
+---Adds the given gangs to the shared object
+---@param gangs Dictionary<string, SHARED.QBCore.Shared.Gang>
+function sv_qbExports:AddGangs(gangs) end
+
+---Removes the given gang from the list of known gangs
+---@param name string the name of the gang to remove
+function sv_qbExports:RemoveGang(name) end
+
+---UPdates the given gang
+---@param name string the name of the gang to update
+---@param gang SHARED.QBCore.Shared.Gang the new gang data
+function sv_qbExports:UpdateGang(name, gang) end
+
+---Returns the current version of the framework (see fxmanifest.lua)
+---@return string version the current version of the framework
+function sv_qbExports:GetCoreVersion() end
+
+---Bans the given player 
+---@param player player the player to ban
+---@param reason string the reason for the ban
+function sv_qbExports:ExploitBan(player, reason) end
 
 ---@class SHARED.QBCore
 
@@ -636,11 +711,6 @@ LocalPlayer.state = {}
 
 
 
----@class SERVER.QBCore
----@class SERVER.QBCore.CoreObject
-
-
-
 
 
 ---@class SHARED.QBCore.Config
@@ -859,3 +929,260 @@ function QBS.SetDefaultVehicleExtras(vehicle, config) end
 ---@field weapontype string the type of the weapon
 ---@field ammoType string the ammo type of the weapon
 ---@field damagereason string the damage reason of the weapon
+
+
+
+
+
+
+---@class SERVER.QBCore.CoreObject
+---@field Commands SERVER.QBCore.CoreObject.Commands
+---@field Functions SERVER.QBCore.CoreObject.Functions
+local SQC = {}
+
+---Debugs the content of the given table to the server console
+---@param tbl table
+---@param indent boolean whether or not the content should be indented on sublevels
+function SQC.Debug(tbl, indent) end
+
+---Logs the given message to the server console as an error
+---@param resource string the name of the calling resource
+---@param msg string the error to log
+function SQC.ShowError(resource, msg) end
+
+---Logs the given message to the server console as a success
+---@param resource string the name of the calling resource
+---@param msg string the success to log
+function SQC.ShowSuccess(resource, msg) end
+
+---@class SERVER.QBCore.CoreObject.Commands
+---@field List Dictionary<string, SERVER.QBCore.CoreObject.CommandData>
+---@field IgnoreList Dictionary<string, boolean> some backwards compatibility, not really required for anything
+local SQCC = {}
+
+---@class SERVER.QBCore.CoreObject.CommandData
+---@field name string the name of the command (lowercase)
+---@field permission string the group that is allowed to use the command
+---@field help string the help text of the command
+---@field arguments string[] the names of the arguments for this command
+---@field argsrequired boolean whether or not the arguments are required (if they are, the command will not be executed without them)
+---@field callback fun(source: player, args: string[], raw: string) the callback function of the command
+
+---Adds a new command
+---@param name string the name of the command
+---@param help string the help text
+---@param arguments string[] the required arguments
+---@param argsrequired boolean whether or not the arguments are required
+---@param permission string? the permission required to use the command (default: 'user')
+---@param callback fun(source: player, args: string[], raw: string) the callback function of the command
+function SQCC.Add(name, help, arguments, argsrequired, permission, callback) end
+
+---refreshes the permissions and command list for the given player
+---@param source player the player to refresh the permissions and command list for
+function SQCC.Refresh(source) end
+
+---@class SERVER.QBCore.CoreObject.Functions
+local SQCF = {}
+
+---Returns the coordinates of the given entity with heading
+---@nodiscard
+---@param entity entity
+---@return vector4 coords the coords of the entity
+function SQCF.GetCoords(entity) end
+
+---Returns the identifier of the given player of the given type
+---@nodiscard
+---@param source player 
+---@param idtype 'license' | 'steam' | 'discord' | 'ip' | 'xbl' | 'live' | 'fivem' | 'rockstar'? the type of the identifier (default: license)
+---@return string? identifier the identifier of the player
+function SQCF.GetIdentifier(source, idtype) end
+
+---Returns the id of the player related to the given identifier<br>
+---*NOTE:
+---This might be a big hit on the performance (depending on the amount of players online)<br>
+---It goes through all players (QBCore.Players) and checks if any of their identifiers fits the given one.*
+---@nodiscard
+---@param identifier string the identifier to get the player id from
+---@return player? player the player id related to the given identifier
+function SQCF.GetSource(identifier) end
+
+---Returns the qb player object for the given player server id
+---@nodiscard
+---@param source player the player server id
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayer(source) end
+
+---Returns the qb player for the given citizen id
+---@nodiscard
+---@param citizenid string the citizen id
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayerByCitizenId(citizenid) end
+
+---Returns the qb player for the given citizen id (the player will have all the functions, but some events will not be triggered)
+---*NOTE: You should be able to use this like any other player, except that you can't do anything that inclodes the players source*
+---@nodiscard
+---@param citizenid string the citizen id
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetOfflinePlayerByCitizenId(citizenid) end
+
+---Returns the qb player for the given license
+---@nodiscard
+---@param license string license id
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayerByLicense(license) end
+
+---Returns the qb player who has the given phone number
+---@nodiscard
+---@param phoneNumber string the phone number
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayerByPhone(phoneNumber) end
+
+---Returns teh player owning the given account
+---@nodiscard
+---@param account string the identifier of the account
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayerByAccount(account) end
+
+---Returns the first player where the given property and value matches<br>
+---*NOTE:<br>
+---This checks properties in the qPlayer.PlayerData.charinfo section
+---**THIS ONLY RETURNS THE FIRST RESULT, EVEN IF THERE ARE MULTIPLE MATCHES***
+---@nodiscard
+---@param property string the property to check
+---@param value any the value to check
+---@return SERVER.QBCore.Player? qPlayer
+function SQCF.GetPlayerByCharInfo(property, value) end
+
+---Returns a list of all player server ids that are currently online
+---@nodiscard
+---@return player[] players an array of all player server ids
+function SQCF.GetPlayers() end
+
+---Returns an array of all currently online qPlayers
+---@nodiscard
+---@return SERVER.QBCore.Player[] players an array of all currently online qPlayers
+function SQCF.GetQBPlayers() end
+
+---Returns the server ids and the amount of the players in the given job, currently onduty
+---@nodiscard
+---@param job string the name of the job to check
+---@return player[] players an array of all player server ids
+---@return integer amount the amount of players in the given job
+function SQCF.GetPlayersOnDuty(job) end
+
+---Returns only the amount of players onduty in the given job
+---@nodiscard
+---@param job string the name of the job to check
+---@return integer amount the amount of players in the given job
+function SQCF.GetDutyCount(job) end
+
+---Returns the closest player to the given coordinates<br>
+---*NOTE:<br>
+---If coords are not given it will take the coordinates of the given player<br>
+---it will ignore the given player at all time*
+---@nodiscard
+---@param source player? a player to ignore / replacement for coords
+---@param coords vector3? the coords to check from
+---@return player player the closest player to the given coordinates
+---@return number distance the distance to the closest player
+function SQCF.GetClosestPlayer(source, coords) end
+
+---Returns the closest object to the given coords / to the given player
+---@nodiscard
+---@param source player?
+---@param coords vector3?
+---@return object object
+---@return number distance
+function SQCF.GetClosestObject(source, coords) end
+
+---Returns the closest ped to the given coords / to the given player
+---@nodiscard
+---@param source player?
+---@param coords vector3?
+---@return ped ped
+---@return number distance
+function SQCF.GetClosestVehicle(source, coords) end
+
+---Returns the closest vehicle to the given coords / to the given player
+---@nodiscard
+---@param source player?
+---@param coords vector3?
+---@return vehicle vehicle
+---@return number distance
+function SQCF.GetClosestPed(source, coords) end
+
+---Returns the qb bucket objects (playerBuckets, entityBuckets)
+---@nodiscard
+---@return Dictionary<string, {id: player, bucket: integer}> playerBuckets
+---@return Dictionary<entity, {id: entity, bucket: integer}> entityBuckets
+function SQCF.GetBucketObjects() end
+
+---Warps the player into the given dimension (bucket) and changes the bucket in the player bucket map
+---@param source player the player to warp
+---@param bucket integer the dimension to warp the player into
+---@return boolean success whether or not the warp was successful
+function SQCF.SetPlayerBucket(source, bucket) end
+
+---Warps the entity into the given dimension (bucket) and changes the bucket in the entity bucket map
+---@param entity entity the entity to warp
+---@param bucket integer the dimension to warp the entity into
+---@return boolean success whether or not the warp was successful
+function SQCF.SetEntityBucket(entity, bucket) end
+
+---Returns all the players inside the given bucket<br>
+---*NOTE:<br>
+---This function only works if the players bucket was set over the function of this framework and not directly over the game native*
+---@nodiscard
+---@param bucket integer the bucket to get the players from
+---@return player[] players an array of all players in the given bucket
+function SQCF.GetPlayersInBucket(bucket) end
+
+---Returns all the entities inside the given bucket<br>
+---*NOTE:<br>
+---This function only works if the entities bucket was set over the function of this framework and not directly over the game native*
+---@nodiscard
+---@param bucket integer the bucket to get the entities from
+---@return entity[] entities an array of all entities in the given bucket
+function SQCF.GetEntitiesInBucket(bucket) end
+
+---Creates a vehicle and places the given player in the vehicle<br>
+---*NOTE:<br>
+---This function requires a player to be near the vehicle*
+---@nodiscard
+---@param source player the player to place in the vehicle
+---@param model string|hash the model name of the vehicle
+---@param coords vector4? the coords to spawn the vehicle at or the players coords
+---@param warp boolean whether or not the player should be warped into the vehicle
+---@return vehicle vehicle the vehicle that was created
+function SQCF.SpawnVehicle(source, model, coords, warp) end
+
+---Uses the experimental ``CreateAutomobile` native to create a vehicle<br>
+---*NOTE:<br>
+---This function dosn't require a player nearby, but dosn't work for all vehicles.*
+---@nodiscard
+---@param source player
+---@param model string|hash
+---@param coords vector4
+---@param warp boolean
+---@return vehicle vehicle
+function SQCF.CreateAutomobile(source, model, coords, warp) end
+
+---Creates a vehicle using the `CreateVehicleServerSetter` native to create a vehicle<br>
+---*NOTE:<br>
+---This is the function that should be used to create vehicles*
+---@nodiscard
+---@param source player
+---@param model string|hash
+---@param vehtype 'automobile'|'bike'|'boat'|'helicopter'|'plane'|'train'
+---@param coords vector4
+---@param warp boolean
+---@return vehicle vehicle
+function SQCF.CreateVehicle(source, model, vehtype, coords, warp) end
+
+---@class SERVER.QBCore.Player
+
+---@param name 'QBCore:DebugSometing'
+---@param tbl table
+---@param indent boolean
+---@param resource string
+function TriggerServerEvent(name, tbl, indent, resource) end
