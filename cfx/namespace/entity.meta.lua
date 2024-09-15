@@ -231,6 +231,24 @@ function SetEntityProofs(entity, bulletProof, fireProof, explosionProof, collisi
 ---@param bGrabFromOtherScript boolean true to set the entity owned by this script. (only works if this client has ownership of the entity)
 function SetEntityAsMissionEntity(entity, scriptHostObject, bGrabFromOtherScript) end
 
+---**CLIENT**<br>
+---Teleports an entity to specified coordinates directly, with options to maintain certain behaviors post-teleportation.
+---@param entity entity the entity to teleport
+---@param x number the x-coordinate to teleport to
+---@param y number the y-coordinate to teleport to
+---@param z number the z-coordinate to teleport to
+---@param keepTasks boolean If true, the tasks currently assigned to the ped are not removed upon teleportation. Applies only to peds.
+---@param keepIK boolean If true, the Inverse Kinematics (IK) on the ped are not reset upon teleportation. Applies only to peds.
+---@param doWarp boolean If false, the entity will maintain continuous motion and will not clear contacts nor create space for itself upon teleportation.
+function SetEntityCoordsNoOffset(entity, x, y, z, keepTasks, keepIK, doWarp) end
+
+---**CLIENT**<br>
+---Sets the entity's collision state#
+---@param entity entity the entity to set the collision state of
+---@param toggle boolean whether the entity's collision is enabled or not
+---@param keepPhysics boolean whether the entity's physics should be kept
+function SetEntityCollision(entity, toggle, keepPhysics) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

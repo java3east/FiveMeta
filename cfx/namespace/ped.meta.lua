@@ -86,11 +86,46 @@ function SetPedArmour(ped, amount) end
 ---@param overlay hash the overlay of the decoration
 function AddPedDecorationFromHashes(ped, collection, overlay) end
 
+---**CLIENT**<br>
 ---Returns whether the specified ped is male or female.
 ---@nodiscard
 ---@param ped ped the ped to check
 ---@return boolean isMale whether the ped
 function IsPedMale(ped) end
+
+---**CLIENT**<br>
+---Clears all ped decorations (tattoos, don't know what else though) from the specified ped.
+---@param ped ped the ped to clear the decorations from
+function ClearPedDecorations(ped) end
+
+---**CLIENT**<br>
+---Returns the current drawableId for the given component id for the given ped
+---@nodiscard
+---@param ped ped the ped to get the drawable id from
+---@param componentId integer the component id to get the drawable id from
+---@return integer drawableId the drawable id
+function GetPedDrawableVariation(ped, componentId) end
+
+---**CLIENT**<br>
+---Sets the ped's component variation.
+---@param ped ped the ped to set the component variation for
+---@param componentId integer the component id
+---|    0: Head                 -- docs not sure if this is the correct name for this component<br>
+---|    1: Mask                 -- docs not sure if this is the correct name for this component<br>
+---|    2: Hair                 -- docs not sure if this is the correct name for this component<br>
+---|    3: Torso                -- docs not sure if this is the correct name for this component<br>
+---|    4: Legs                 -- docs not sure if this is the correct name for this component<br>
+---|    5: Arms                 -- docs not sure if this is the correct name for this component<br>
+---|    6: Shoes                -- docs not sure if this is the correct name for this component<br>
+---|    7: Accessories          -- docs not sure if this is the correct name for this component<br>
+---|    8: Accessories 1        -- docs not sure if this is the correct name for this component<br>
+---|    9: Accessories 2        -- docs not sure if this is the correct name for this component<br>
+---|    10: Decals              -- docs not sure if this is the correct name for this component<br>
+---|    11: Tops                -- docs not sure if this is the correct name for this component<br>
+---@param drawableId integer the drawable id (default: 0)
+---@param textureId integer the texture id (default: 0)
+---@param paletteId integer the palette id (default: 0)
+function SetPedComponentVariation(ped, componentId, drawableId, textureId, paletteId) end
 
 --#endregion
 

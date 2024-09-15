@@ -709,6 +709,11 @@ function RemoveBlip(blip) end
 ---@return blip blip
 function AddBlipForCoord(x, y, z) end
 
+---Creates a new blip for the given entity
+---@param entity entity
+---@return blip blip
+function AddBlipForEntity(entity) end
+
 ---Sets the sprite of the blip
 ---@param blip blip
 ---@param sprite integer

@@ -44,6 +44,13 @@ function RequestAnimDict(animDict) end
 ---@param animDict string the anim dict to check
 function HasAnimDictLoaded(animDict) end
 
+---**CLIENT**<br>
+---Checks if the given model exists
+---@nodiscard
+---@param model hash the model to check
+---@return boolean exists true if the model exists, false otherwise
+function IsModelInCdimage(model) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

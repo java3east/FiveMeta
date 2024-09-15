@@ -62,6 +62,11 @@ function TaskGoStraightToCoord(ped, x, y, z, speed, timeout, targetHeading, dist
 ---@param lockZ boolean
 function TaskPlayAnim(ped, animDict, animName, blendInSpeed, blendOutSpeed, duration, flag, playbackRate, lockX, lockY, lockZ) end
 
+---**CLIENT**<br>
+---Clears the ped's tasks (animations, walking, etc.)
+---@param ped ped the ped to clear the tasks from
+function ClearPedTasks(ped) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

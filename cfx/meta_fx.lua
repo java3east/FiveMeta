@@ -74,6 +74,9 @@ provide = nil
 ---@param str string
 lua54 = function(str) end
 
+---@param ignore string[]
+escrow_ignore = function(ignore) end
+
 ---Local player object
 LocalPlayer = {}
 
@@ -83,3 +86,24 @@ LocalPlayer.state = {}
 
 ---@class GlobalState
 GlobalState = {}
+
+---@class Promise
+promise = {}
+
+---Returns a new promise
+---@return Promise promise
+function promise:new() end
+
+---Resolves the promise with the given data
+---@vararg any
+function promise:resolve(...) end
+
+---Waits for the given awaitable to finish
+---@param awaitable Promise
+---@return ... return values of the awaitable
+function Await(awaitable) end
+
+Citizen = {}
+Citizen.CreateThread = CreateThread
+Citizen.Wait = Wait
+Citizen.Await = Await
