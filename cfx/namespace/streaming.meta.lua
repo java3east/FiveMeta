@@ -51,6 +51,18 @@ function HasAnimDictLoaded(animDict) end
 ---@return boolean exists true if the model exists, false otherwise
 function IsModelInCdimage(model) end
 
+---**CLIENT**<br>
+---Requests the specified ptfx asset to be loaded
+---@param fxName string the name of the ptfx asset
+function RequestNamedPtfxAsset(fxName) end
+
+---**CLIENT**<br>
+---@nodiscard
+---Checks if the given ptfx asset has loaded successfully
+---@param fxName string the name of the ptfx asset
+---@return boolean hasLoaded true if the ptfx asset has loaded, false otherwise
+function HasNamedPtfxAssetLoaded(fxName) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

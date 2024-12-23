@@ -249,6 +249,11 @@ function SetEntityCoordsNoOffset(entity, x, y, z, keepTasks, keepIK, doWarp) end
 ---@param keepPhysics boolean whether the entity's physics should be kept
 function SetEntityCollision(entity, toggle, keepPhysics) end
 
+---**CLIENT**<br>
+---Resets the alpha of the entity (sets it to 255).
+---@param entity entity the entity to reset the alpha of
+function ResetEntityAlpha(entity) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

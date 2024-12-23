@@ -16,12 +16,19 @@
 
 ---@class Dictionary<K, V> : {[K]: V}
 
+---@class vector2
+---@field x number
+---@field y number
+
 ---@class vector3
 ---@field x number
 ---@field y number
 ---@field z number
 
----@class vector4 : vector3
+---@class vector4
+---@field x number
+---@field y number
+---@field z number
 ---@field w number
 
 ---@class hash          : integer
@@ -39,6 +46,7 @@
 ---@class vehicle       : entity
 ---@class ped           : entity
 ---@class object        : entity
+---@class particle      : integer
 
 
 

@@ -146,6 +146,11 @@ function SetNuiFocusKeepInput(keepInput) end
 ---@param command string the command to run
 function ExecuteCommand(command) end
 
+---Returns a list of all active players on the server.
+---@nodiscard
+---@return player[] players an array of player handles (the player server ids)
+function GetActivePlayers() end
+
 --#endregion
 
 ---[[ ======================================== ]]--

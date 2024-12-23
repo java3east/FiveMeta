@@ -9,7 +9,7 @@
     THIS REQUIRES THE LUA LANGUAGE SERVER TO WORK PROPERLY
 ]]
 
----@meta
+---@meta cfx.fx
 
 ---@param str string
 fx_version = function(str) end

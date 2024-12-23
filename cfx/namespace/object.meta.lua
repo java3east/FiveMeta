@@ -63,6 +63,19 @@ function DoorSystemGetIsPhysicsLoaded(ptr) end
 ---@return integer state the state of the door (0 - 6)
 function DoorSystemGetDoorState(ptr) end
 
+---**CLIENT**<br>
+---Returns the closest object of the specified type within the specified radius.
+---@nodiscard
+---@param x number the X component of the position to search at
+---@param y number the Y component of the position to search at
+---@param z number the Z component of the position to search at
+---@param radius number the radius to search within
+---@param modelHash hash the model hash of the object to search for
+---@param isMission boolean if true doesn't return mission objects
+---@param p6 boolean unknown
+---@param p7 boolean unknown
+function GetClosestObjectOfType(x, y, z, radius, modelHash, isMission, p6, p7) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

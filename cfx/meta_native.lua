@@ -21,7 +21,7 @@ exports = {}
 
 ---Returns the player object from the given server id.
 ---@param src integer the players server id.
----@return { state: { set: fun(self: table, key: string, value: any) } } playerObject
+---@return { state: { set: fun(self: table, key: string, value: any, replicated: boolean), [string]: any } } playerObject
 function Player(src) end
 
 ---json function container
@@ -252,6 +252,10 @@ function EndTextCommandDisplayHelp(shape, loop, beep, duration) end
 ---@return vector3 vector3
 function vector3(x, y, z) end
 
+---Creates a new vector2
+---@param x number x coordinate
+---@param y number y coordinate
+function vector2(x, y) end
 
 ---Returns the location of the gien entity.
 ---@param entity entity the entity id.

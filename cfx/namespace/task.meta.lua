@@ -67,6 +67,13 @@ function TaskPlayAnim(ped, animDict, animName, blendInSpeed, blendOutSpeed, dura
 ---@param ped ped the ped to clear the tasks from
 function ClearPedTasks(ped) end
 
+---**CLIENT**<br>
+---Makes the given ped warp into the given vehicle
+---@param ped ped the ped to warp into the vehicle
+---@param vehicle vehicle the vehicle to warp into
+---@param seat integer the seat to warp into
+function TaskWarpPedIntoVehicle(ped, vehicle, seat) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

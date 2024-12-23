@@ -1191,6 +1191,11 @@ function ESX.Trace(msg) end
 ---@param item string the name of the item that the player should be forced to use.
 function ESX.UseItem(player, item) end
 
+---Registers a new function override for the player objects. This can be used to add new functions to the player object, or to override existing functions.
+---@param key string the name of the function to override
+---@param fun fun(player: ESX_PLAYER, ...) the function to call when the function is called
+function ESX.RegisterPlayerFunctionOverrides(key, fun) end
+
 ---An Async function that Creates Server-Sided Objects.
 ---> Note: CreateObject Is a RPC (Remote Procedure Call) Native, which means it requires there to be a valid client nearby for it to be able to spawn!
 ---@param model string|hash the model of the object that should be spawned

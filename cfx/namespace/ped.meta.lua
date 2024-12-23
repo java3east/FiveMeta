@@ -127,6 +127,79 @@ function GetPedDrawableVariation(ped, componentId) end
 ---@param paletteId integer the palette id (default: 0)
 function SetPedComponentVariation(ped, componentId, drawableId, textureId, paletteId) end
 
+---**CLIENT**<br>
+---Sets the ped's head blend data (face shape and color)
+---@param ped ped the ped to set the head blend data for
+---@param shapeFirstID integer the first shape id
+---@param shapeSecondID integer the second shape id
+---@param shapeThirdID integer the third shape id
+---@param skinFirstID integer the first skin id
+---@param skinSecondID integer the second skin id
+---@param skinThirdID integer the third skin id
+---@param shapeMix number the shape mix
+---@param skinMix number the skin mix
+---@param thirdMix number the third mix
+---@param isParent boolean whether the ped is the parent
+function SetPedHeadBlendData(ped, shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent) end
+
+---**CLIENT**<br>
+---Sets the ped heads overlay (e.g. beard, makeup, etc)
+---@param ped ped the ped to set the head overlay for
+---@param overlayID integer the overlay id
+---@param index integer the index
+---@param opacity number the opacity
+function SetPedHeadOverlay(ped, overlayID, index, opacity) end
+
+---**CLIENT**<br>
+---Sets the color of the overlays
+---@param ped ped the ped to set the head overlay color for
+---@param overlayID integer the overlay id
+---@param colorType integer the color type (1: eyebrows, beards, makeup, chesthair; 2: blush, lipstick; 0: otherwise)
+---@param colorID integer the color id
+---@param secondColorID integer the second color id
+function SetPedHeadOverlayColor(ped, overlayID, colorType, colorID, secondColorID) end
+
+---**CLIENT**<br>
+---Sets the hair color of the ped.
+---@param ped ped the ped to set the hair color for
+---@param colorID integer the color id
+---@param highlightColorID integer the highlight color id
+function SetPedHairColor(ped, colorID, highlightColorID) end
+
+---**CLIENT**<br>
+---Sets the tint of the ped's hair.
+---@param ped ped the ped to set the hair tint for
+---@param colorID integer the color id
+---@param highlightColorID integer the highlight color id
+function SetPedHairTint(ped, colorID, highlightColorID) end
+
+---**CLIENT**<br>
+---Enable / disable ped shadow
+---@param ped ped the ped to set the shadow for
+---@param toggle boolean whether to enable or disable the shadow
+function SetPedAoBlobRendering(ped, toggle) end
+
+---**CLIENT**<br>
+---Returns the texture index for the given peds component id.
+---@nodiscard
+---@param ped ped the ped to get the texture index from
+---@param componentId integer the component id to get the texture index from (0-11)
+---@return integer textureIndex the texture index
+function GetPedTextureVariation(ped, componentId) end
+
+---**CLIENT**<br>
+---Checks if the ped is on a bike.
+---@nodiscard
+---@param ped ped the ped to check
+---@return boolean isOnBike whether the ped is on a bike
+function IsPedOnAnyBike(ped) end
+
+---**CLIENT**<br>
+---Sets whether or not the ped can be knocked off a vehicle.
+---@param ped ped the ped to set the knock off state for
+---@param state integer whether the ped can be knocked off
+function SetPedCanBeKnockedOffVehicle(ped, state) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
