@@ -97,6 +97,17 @@ function DoesBlipExist(blip) end
 ---@return vector3 location the coordinates of the blip
 function GetBlipInfoIdCoord(blip) end
 
+---**CLIENT**<br>
+---Returns the 2d screen coordinates of the specified 3d world coordinates.
+---@nodiscard
+---@param worldX number the x coordinate of the world position
+---@param worldY number the y coordinate of the world position
+---@param worldZ number the z coordinate of the world position
+---@return boolean onScreen
+---@return number screenX
+---@return number screenY
+function World3dToScreen2d(worldX, worldY, worldZ) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

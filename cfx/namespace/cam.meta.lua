@@ -35,6 +35,13 @@ function SetCamActive(cam, active) end
 ---@param z number z coord
 function PointCamAtCoord(cam, x, y, z) end
 
+---**CLIENT**<br>
+---Returns the rotation of the gameplay camera in the given order.
+---@nodiscard
+---@param order integer
+---@return vector3 rotation
+function GetGameplayCamRot(order) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

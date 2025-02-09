@@ -70,6 +70,17 @@ function EndTextCommandDisplayText(x, y) end
 ---@param a integer 0 - 255 alpha
 function DrawRect(x, y, width, height, r, g, b, a) end
 
+---**CLIENT**<br>
+---Sets the type of text entry
+---@param type 'STRING'|'TWOSTRINGS'|'NUMBER'|'PERCENTAGE'|'FO_TWO_NUM'|'ESMINDOLLA'|'ESDOLLA'|'MTPHPER_XPNO'|'AHD_DIST'|'CMOD_STAT_0'|'CMOD_STAT_1'|'CMOD_STAT_2'|'CMOD_STAT_3'|'DFLT_MNU_OPT'|'F3A_TRAFDEST'|'ES_HELP_SOC3'
+function SetTextEntry(type) end
+
+---**CLIENT**<br>
+---Draws the set text entry
+---@param x number 0.0 - 1.0
+---@param y number 0.0 - 1.0
+function DrawText(x, y) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

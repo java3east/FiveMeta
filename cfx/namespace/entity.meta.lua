@@ -254,6 +254,30 @@ function SetEntityCollision(entity, toggle, keepPhysics) end
 ---@param entity entity the entity to reset the alpha of
 function ResetEntityAlpha(entity) end
 
+---**CLIENT**<br>
+---Returns the roll for the given entity
+---@nodiscard
+---@param entity entity
+---@return number roll
+function GetEntityRoll(entity) end
+
+---**CLIENT**<br>
+---Returns the offset from an entity when worldcoords are given
+---@nodiscard
+---@param entity entity
+---@param posX number world x
+---@param posY number world y
+---@param posZ number world z
+---@return vector3 offset
+function GetOffsetFromEntityGivenWorldCoords(entity, posX, posY, posZ) end
+
+---**CLIENT**<br>
+---Sets the entity visible / invisible
+---@param entity entity the entity to set the visibility of
+---@param toggle boolean whether the entity is visible or not
+---@param unk boolean? always 0 in the scripts
+function SetEntityVisible(entity, toggle, unk) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

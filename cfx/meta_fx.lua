@@ -77,6 +77,12 @@ lua54 = function(str) end
 ---@param ignore string[]
 escrow_ignore = function(ignore) end
 
+---@param url string
+loadscreen = function(url) end
+
+---@param str 'yes'|'no'
+loadscreen_manual_shutdown = function(str) end
+
 ---Local player object
 LocalPlayer = {}
 
@@ -84,7 +90,7 @@ LocalPlayer = {}
 ---@class PLAYER_STATE
 LocalPlayer.state = {}
 
----@class GlobalState
+---@class GlobalState : { state: { set: fun(self: any, key: string, value: any, repl: boolean) } }
 GlobalState = {}
 
 ---@class Promise
