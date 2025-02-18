@@ -49,6 +49,14 @@ function EnableAllControlActions(padIndex) end
 ---@param control integer https://docs.fivem.net/docs/game-references/controls/#controls
 function GetDisabledControlNormal(padIndex, control) end
 
+---**CLIENT**<br>
+---Checks if the given disabled control is pressed
+---@nodiscard
+---@param padIndex integer
+---@param control integer
+---@return boolean isPressed true if the control is pressed
+function IsDisabledControlJustPressed(padIndex, control) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

@@ -42,6 +42,19 @@ function IsEntityPositionFrozen(entity) end
 ---@return string value the value of the metadata key
 function GetResourceMetadata(resource, key, index) end
 
+---**SHARED**<br>
+---Returns the resource kvp (saved locally) for the given key
+---@nodiscard
+---@param key string
+---@return number value
+function GetResourceKvpFloat(key) end
+
+---**SHARED**<br>
+---Sets the resource kvp (saved locally) for the given key
+---@param key string
+---@param value number
+function SetResourceKvpFloat(key, value) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
@@ -150,6 +163,26 @@ function ExecuteCommand(command) end
 ---@nodiscard
 ---@return player[] players an array of player handles (the player server ids)
 function GetActivePlayers() end
+
+---**CLIENT**<br>
+---Returns the world coord for the given screen coord
+---@nodiscard
+---@param screenX number
+---@param screenY number
+---@return number x
+---@return number y
+---@return number z
+---@return number normalX
+---@return number normalY
+---@return number normalZ
+function GetWorldCoordFromScreenCoord(screenX, screenY) end
+
+---**CLIENT**<br>
+---Returns the current location of the mouse on the screen.
+---@nodiscard
+---@return number x
+---@return number y
+function GetNuiCursorPosition() end
 
 --#endregion
 
@@ -288,5 +321,11 @@ function SetPedAmmo(ped, weaponHash, ammoCount) end
 ---@param doorFlag boolean?
 ---@return object object
 function CreateObject(modelHash, x, y, z, isNetwork, netMissionEntity, doorFlag) end
+
+---**SERVER**<br>
+---Returns an array of all players currently on the server
+---@nodiscard
+---@return player[] players an array of player server ids
+function GetPlayers() end
 
 --#endregion

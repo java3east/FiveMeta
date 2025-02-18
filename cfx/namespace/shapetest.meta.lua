@@ -48,6 +48,21 @@ function StartExpensiveSynchronousShapeTestLosProbe(x1, y1, z1, x2, y2, z2, flag
 ---@return entity entity the entity that was hit
 function GetShapeTestResult(handle) end
 
+---**CLIENT**<br>
+---Asynchronously starts a line-of-sight (raycast) world probe shape test.
+---@nodiscard
+---@param startX number
+---@param startY number
+---@param startZ number
+---@param endX number
+---@param endY number
+---@param endZ number
+---@param flags integer bit mask (All: -1, None: 0, World: 1, Vehicles: 2, Peds: 4, Ragdolls: 8, Objects: 16, Water: 32, Glass: 64, River: 128, Foliage: 256)
+---@param entity entity an entity to ignore
+---@param options integer bit mask (1, 2, 4, 7 (usually 4 or 7))
+---@return integer handle the handle of the shape test
+function StartShapeTestLosProbe(startX, startY, startZ, endX, endY, endZ, flags, entity, options) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

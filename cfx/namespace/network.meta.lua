@@ -30,6 +30,13 @@
 ---@param iSpawnReason integer? This is an enum value (eSpawnReason)
 function NetworkResurrectLocalPlayer(x, y, z, heading, nInvincibilityTime, bLeaveDeadPed, bUnpauseRenderPhase, iSpawnLocation, iSpawnReason) end
 
+---**CLIENT**<br>
+---Returns the Player associated to a given Ped when in an online session.
+---@nodiscard
+---@param ped ped the ped to get the player from
+---@return player player the player index
+function NetworkGetPlayerIndexFromPed(ped) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

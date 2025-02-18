@@ -1,9 +1,9 @@
 ---@meta GRAPHICS
 
 
---[[ ======================================== ]]--
---[[ ============= **SHARED** =============== ]]--
---[[ ======================================== ]]--
+--[[ ======================================== ]] --
+--[[ ============= **SHARED** =============== ]] --
+--[[ ======================================== ]] --
 
 --#region **SHARED**
 
@@ -59,7 +59,6 @@ function UseParticleFxAssetNextCall(name) end
 ---@return particle handle the handle of the particle effect
 function StartParticleFxNonLoopedAtCoord(effectName, xPos, yPos, zPos, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis) end
 
-
 ---**CLIENT**<br>
 ---Stops the specified particle effect.
 ---@param ptfxHandle particle handle the handle of the particle effect
@@ -107,6 +106,16 @@ function GetBlipInfoIdCoord(blip) end
 ---@return number screenX
 ---@return number screenY
 function World3dToScreen2d(worldX, worldY, worldZ) end
+
+---**CLIENT**<br>
+---Returns the 2d screen coordinates of the specified 3d world coordinates.
+---@nodiscard
+---@param worldX number
+---@param worldY number
+---@param worldZ number
+---@return number screenX
+---@return number screenY
+function GetScreenCoordFromWorldCoord(worldX, worldY, worldZ) end
 
 --#endregion
 
