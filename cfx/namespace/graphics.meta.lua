@@ -113,6 +113,7 @@ function World3dToScreen2d(worldX, worldY, worldZ) end
 ---@param worldX number
 ---@param worldY number
 ---@param worldZ number
+---@return boolean onScreen
 ---@return number screenX
 ---@return number screenY
 function GetScreenCoordFromWorldCoord(worldX, worldY, worldZ) end
