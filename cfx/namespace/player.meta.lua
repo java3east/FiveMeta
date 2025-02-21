@@ -1,9 +1,9 @@
 ---@meta
 
 
---[[ ======================================== ]]--
---[[ ============= **SHARED** =============== ]]--
---[[ ======================================== ]]--
+--[[ ======================================== ]] --
+--[[ ============= **SHARED** =============== ]] --
+--[[ ======================================== ]] --
 
 --#region **SHARED**
 
@@ -37,6 +37,13 @@ function GetPlayerTargetEntity(player) end
 ---@param player integer the player id of the player to set the model for (not the server id, but the player id e.g. `PlayerId()`)
 ---@param model hash the model has for the model to load.
 function SetPlayerModel(player, model) end
+
+---**CLIENT**<br>
+---Disables the player's firing ability.
+---has to be called each frame
+---@param player player the player id of the player to disable firing for (not the server id, but the player id e.g. `PlayerId()`)
+---@param toggle boolean true to disable firing, false to enable firing
+function DisablePlayerFiring(player, toggle) end
 
 --#endregion
 

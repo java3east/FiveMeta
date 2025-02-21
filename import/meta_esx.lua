@@ -25,9 +25,6 @@ LocalPlayer.state.identifier = ""
 ---@type string
 LocalPlayer.state.license = ""
 
----@type ESX_JOB
-LocalPlayer.state.job = {}
-
 ---@type string
 LocalPlayer.state.group = ""
 
@@ -37,6 +34,12 @@ LocalPlayer.state.name = ""
 ---*missing information*
 ---@type table
 LocalPlayer.state.metadata = {}
+
+---Sets a state value for the player.
+---@param key string the key to set
+---@param value any the value to set
+---@param replicate boolean? if the value should be replicated to the server
+function LocalPlayer.state:set(key, value, replicate) end
 
 ---@class ESX_MATH
 local Math = {}
@@ -79,7 +82,7 @@ PlayerData.accounts = {}
 
 ---The players coordinates
 ---@type {x: number, y: number, z:number} - vector3?
-PlayerData.coords = { }
+PlayerData.coords = {}
 PlayerData.coords.x = 0.0
 PlayerData.coords.y = 0.0
 PlayerData.coords.z = 0.0
@@ -447,7 +450,7 @@ ESX.UI.HUD = {}
 ESX.UI.Menu = {}
 
 ---**CLIENT ONLY**<br>Deletes the given object from the world.
----@param  object object the object to delete   
+---@param  object object the object to delete
 function ESX.Game.DeleteObject(object) end
 
 ---**CLIENT ONLY**<br>Deletes the given vehicle from the world.
@@ -646,7 +649,7 @@ function ESX.SearchInventory(item, count) end
 function ESX.SetPlayerData(key, value) end
 
 ---This function shows an advanced notification.
----@param title string the title of the notification 
+---@param title string the title of the notification
 ---@param subject string the subject of the notification
 ---@param msg string the message of the notification
 ---@param mugshot base64 the mugshot of the notification
@@ -762,10 +765,10 @@ function ESX.UI.Menu.GetOpened(type, namespace, name) end
 function ESX.UI.Menu.IsOpen(type, namespace, name) end
 
 ---This function opens a menu.
----@param type string|'default' 
+---@param type string|'default'
 ---@param namespace string the namespace of the menu (usually the resource name)
 ---@param name string the name of the menu
----@param data { title: string, align: string|"top-left"|"bottom-left"|"bottom-right"|"top-right", elements: Array<{label: string}> } 
+---@param data { title: string, align: string|"top-left"|"bottom-left"|"bottom-right"|"top-right", elements: Array<{label: string}> }
 ---@param submit fun(data: any, menu: any)? a callback function that will be called when the menu is submitted
 ---@param cancel fun(data:any, menu: any)? a callback function that will be called when the menu is canceled
 ---@param chage fun(data: any, menu: any)? a callback function that will be called when the menu is changed
@@ -777,9 +780,6 @@ function ESX.UI.Menu.Open(type, namespace, name, data, submit, cancel, chage, cl
 ---@param open fun(data: any, submit: fun(data: any, menu: any), cancel: fun(menu: any), chage: fun(data: any, menu: any), close: fun(menu: any)) a callback function that will be called when the menu is opened
 ---@param close fun(menu: any) a callback function that will be called when the menu is closed
 function ESX.UI.Menu.RegisterType(type, open, close) end
-
-
-
 
 ---@class ESX_PLAYER
 local Player = {}
@@ -1090,10 +1090,10 @@ function ESX.ClearTimeout(id) end
 
 ---Registers A command using ESX functions, these use ACE permissions to automatically assign which groups can access the command. It Also has argument types, allowing for better control over the arguments.
 ---@param name string|Array<string> a command or a command with aliases
----@param group string the group that is allowed to use this command 
+---@param group string the group that is allowed to use this command
 ---@param cb fun(xPlayer: ESX_PLAYER, args: Array<string>, showError: any|boolean)
 ---@param allowConsole boolean
----@param suggestion {help: string?, arguments: {name: string?, help: string?, type: "number"|"player"|"string"|"item"|"weapon"|"any"}?}
+---@param suggestion {help: string?, arguments: {name: string?, help: string?, type: "number"|"player"|"string"|"item"|"weapon"|"any"}?}?
 function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion) end
 
 ---This function creates a pickup.
@@ -1237,7 +1237,6 @@ exports.es_extended = {}
 ---Returns the ESX object.<br>*Use `--[[@as CL_ESX]]` (for client side esx) or `--[[@as SV_ESX]]` (for server side esx) behind this function call, so it will be detected as the right one in the file using this function.*
 ---@return CL_ESX|SV_ESX es_extended the ESX object
 function exports.es_extended:getSharedObject() end
-
 
 --[[
     THE FOLLOWING INFORMATION IS CREATED THROUGH

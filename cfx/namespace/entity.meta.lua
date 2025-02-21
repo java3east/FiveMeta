@@ -1,9 +1,9 @@
 ---@meta ENTITY
 
 
---[[ ======================================== ]]--
---[[ ============= **SHARED** =============== ]]--
---[[ ======================================== ]]--
+--[[ ======================================== ]] --
+--[[ ============= **SHARED** =============== ]] --
+--[[ ======================================== ]] --
 
 --#region **SHARED**
 
@@ -33,10 +33,12 @@
 ---@param isPed boolean should be true if attaching to a ped
 ---@param rotationOrder integer the order in which the rotation is applied
 ---@param syncRot boolean if false, the rotation will not be synchronized with the entity it is attached to
-function AttachEntityToEntity(entity1, entity2, boneIndex, x, y, z, xRot, yRot, zRot, p9, useSoftPinning, collision, isPed, rotationOrder, syncRot) end
+function AttachEntityToEntity(entity1, entity2, boneIndex, x, y, z, xRot, yRot, zRot, p9, useSoftPinning, collision,
+                              isPed, rotationOrder, syncRot)
+end
 
 ---**CLIENT**<br>
----Returns the index of the bone. If the bone was not found, -1 will be returned.   
+---Returns the index of the bone. If the bone was not found, -1 will be returned.
 ---@nodiscard
 ---@param entity entity the entity to get the bone index from
 ---@param boneName string the name of the bone to get the index of
@@ -133,7 +135,7 @@ function IsEntityAMissionEntity(entity) end
 
 ---**CLIENT**<br>
 ---Checks if the entity is dead.
----@nodiscard   
+---@nodiscard
 ---@param entity entity the entity to check
 ---@return boolean isDead true if the entity is dead, false otherwise
 function IsEntityDead(entity) end
@@ -178,7 +180,7 @@ function SetEntityHealth(entity, health) end
 function SetEntityInvincible(entity, toggle) end
 
 ---**CLIENT**<br>
----Sets the entity's max health.    
+---Sets the entity's max health.
 ---@param entity entity the entity to set the max health of
 ---@param value integer the max health to set
 function SetEntityMaxHealth(entity, value) end
@@ -222,7 +224,9 @@ function GetEntityProofs(entity) end
 ---@param steamProof boolean whether the entity is steam proof
 ---@param p7 boolean unknown
 ---@param drownProof boolean whether the entity is drown proof
-function SetEntityProofs(entity, bulletProof, fireProof, explosionProof, collisionProof, meleeProof, steamProof, p7, drownProof) end
+function SetEntityProofs(entity, bulletProof, fireProof, explosionProof, collisionProof, meleeProof, steamProof, p7,
+                         drownProof)
+end
 
 ---**CLIENT**<br>
 ---Marks the entity as owned by this script.
@@ -277,6 +281,16 @@ function GetOffsetFromEntityGivenWorldCoords(entity, posX, posY, posZ) end
 ---@param toggle boolean whether the entity is visible or not
 ---@param unk boolean? always 0 in the scripts
 function SetEntityVisible(entity, toggle, unk) end
+
+---**CLIENT**<br>
+---Checks if the entity is playing the given animation
+---@nodiscard
+---@param entity entity the entity to check
+---@param animDict string the animation dictionary to check
+---@param animName string the animation name to check
+---@param taskFlag integer the task flag to check (always 3 in scripts)
+---@return boolean isPlaying true if the entity is playing the animation, false otherwise
+function IsEntityPlayingAnim(entity, animDict, animName, taskFlag) end
 
 --#endregion
 
