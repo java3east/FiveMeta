@@ -113,7 +113,7 @@ function sv_qbExports:UpdateGang(name, gang) end
 ---@return string version the current version of the framework
 function sv_qbExports:GetCoreVersion() end
 
----Bans the given player 
+---Bans the given player
 ---@param player player the player to ban
 ---@param reason string the reason for the ban
 function sv_qbExports:ExploitBan(player, reason) end
@@ -311,8 +311,6 @@ function TriggerEvent(name) end
 ---@param name "qb-core:client:KeyPressed"
 function TriggerEvent(name) end
 
-
-
 ---Displays a text on the screen
 ---@param name "qb-core:client:DrawText"
 ---@param player player
@@ -337,9 +335,6 @@ function TriggerClientEvent(name, player) end
 ---@param player player
 function TriggerClientEvent(name, player) end
 
-
-
-
 ---Displays 3d text at the given coords
 ---@param text string the text
 ---@param position "left" | "top" | "right" | "bottom" the position of the text
@@ -355,12 +350,6 @@ function qbExports:HideText() end
 
 ---no idea what it dose
 function qbExports:KeyPressed() end
-
-
-
-
-
-
 
 ---@class CLIENT.QBCore
 
@@ -474,7 +463,9 @@ function CQCF.Notify(text, texttype, lenght, icon) end
 ---@param propTwo any ignored
 ---@param onFinish fun()?
 ---@param onCancel fun()?
-function CQCF.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel) end
+function CQCF.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo,
+                          onFinish, onCancel)
+end
 
 ---Returns a list of all vehicles in rendering distance of the player.<br>
 ---*NOTE: If you are calling this in a loop you should consider calling `GetGamePool('CVehicle')`<br>
@@ -495,7 +486,7 @@ function CQCF.GetObjects() end
 ---directly, since this is all this function dose, and a little extra performance optimization can't hurt.*
 ---@nodiscard
 ---@return Array<player> players an array of all active players
-function CQCF.GetPlayers()end
+function CQCF.GetPlayers() end
 
 ---Returns all players withing the given distance of the given coords.<br>
 ---@nodiscard
@@ -661,8 +652,9 @@ function CQCF.StartParticleAtCoord(dict, ptName, looped, coords, rot, scale, alp
 ---@param color {r: number, g: number, b: number}?
 ---@param evolution {name: string, amount: integer}? used in `SetParticleFxLoopedEvolution` as second and third parameter idk what it dose though
 ---@param duration integer? only used if the particle is set to looped
-function CQCF.StartParticleOnEntity(dict, ptName, looped, entity, bone, offset, rot, scale, alpha, color, evolution, duration) end
-
+function CQCF.StartParticleOnEntity(dict, ptName, looped, entity, bone, offset, rot, scale, alpha, color, evolution,
+                                    duration)
+end
 
 ---Returns a table of the street name of the given location.
 ---@nodiscard
@@ -913,7 +905,6 @@ function QBS.ChangeVehicleExtra(vehicle, extra, enable) end
 ---@param config {[integer]: boolean}
 function QBS.SetDefaultVehicleExtras(vehicle, config) end
 
-
 ---@class SHARED.QBCore.Shared.Vehicle
 ---@field model string the model name
 ---@field name string the name (display name)
@@ -939,6 +930,7 @@ function QBS.SetDefaultVehicleExtras(vehicle, config) end
 ---@field Commands SERVER.QBCore.CoreObject.Commands
 ---@field Functions SERVER.QBCore.CoreObject.Functions
 local SQC = {}
+
 
 ---Debugs the content of the given table to the server console
 ---@param tbl table
@@ -984,6 +976,12 @@ function SQCC.Refresh(source) end
 ---@class SERVER.QBCore.CoreObject.Functions
 local SQCF = {}
 
+---Adds the given method to all the given player ids
+---@param ids player|player[]|-1 if set to -1 it will be added for all players
+---@param methodName string the name of the method
+---@param handler fun(...:any) : ... the handler function
+function SQCF.AddPlayerMethod(ids, methodName, handler) end
+
 ---Returns the coordinates of the given entity with heading
 ---@nodiscard
 ---@param entity entity
@@ -992,7 +990,7 @@ function SQCF.GetCoords(entity) end
 
 ---Returns the identifier of the given player of the given type
 ---@nodiscard
----@param source player 
+---@param source player
 ---@param idtype 'license' | 'steam' | 'discord' | 'ip' | 'xbl' | 'live' | 'fivem' | 'rockstar'? the type of the identifier (default: license)
 ---@return string? identifier the identifier of the player
 function SQCF.GetIdentifier(source, idtype) end
@@ -1180,6 +1178,110 @@ function SQCF.CreateAutomobile(source, model, coords, warp) end
 function SQCF.CreateVehicle(source, model, vehtype, coords, warp) end
 
 ---@class SERVER.QBCore.Player
+local SQBP = {}
+SQBP.Functions = {}
+
+---Triggers the `QBCore:Player:SetPLayerData` event on the client and the server
+function SQBP.Functions.UpdatePlayerData() end
+
+---Sets the players job
+---@param job string the name of the job
+---@param grade integer the grade of the job
+function SQBP.Functions.SetJob(job, grade) end
+
+---Sets the players gang and grade
+---@param gang string the name of the gang
+---@param grade integer the grade the player should have
+function SQBP.Functions.SetGang(gang, grade) end
+
+---Displays a notification to the player
+---@param text string the text of the notification
+---@param type 'primary'|'error'|'police'|'ambulance' the type of the notification
+---@param length integer the time in milliseconds the notification should be displayed
+function SQBP.Functions.Notify(text, type, length) end
+
+---Checks if the player has the given item
+---@nodiscard
+---@param item string the name of the item
+---@param amount integer the amount of the item
+---@return boolean hasItem whether or not the player has the given item
+function SQBP.Functions.HasItem(item, amount) end
+
+---Returns the name of the players character
+---@nodiscard
+---@return string name the name of the players character
+function SQBP.Functions.GetName() end
+
+---Sets wheather or not this player is on duty
+---@param onDuty boolean whether or not the player is on duty
+function SQBP.Functions.SetJobDuty(onDuty) end
+
+---Sets the given player data key to the given value.
+---This will also send the player data update event
+---@param key string the key to change
+---@param val any the value to set
+function SQBP.Functions.SetPlayerData(key, val) end
+
+---Sets the given metakey to the given value
+---@param meta string the key to change
+---@param val any the value to set
+function SQBP.Functions.SetMetaData(meta, val) end
+
+---Sets the players reputation
+---@param rep string the type of reputation to change
+---@param amount number the amount to add
+function SQBP.Functions.AddRep(rep, amount) end
+
+---Removes the given amount of reputation from the player
+---@param rep string
+---@param amount number
+function SQBP.Functions.RemoveRep(rep, amount) end
+
+---Returns the players current reputation
+---@param rep string the type of reputation
+function SQBP.Functions.GetRep(rep) end
+
+---Adds money to the players given account
+---@param moneyType 'cash'|'bank'|'crypto'
+---@param amount number the amount of money to add
+---@param reason string? the reason for adding the money
+function SQBP.Functions.AddMoney(moneyType, amount, reason) end
+
+---Removes the given amount of money from the players given account
+---@nodiscard
+---@param moneyType 'cash'|'bank'|'crypto'
+---@param amount number the amount to remove
+---@param reason string? the reason for removing the money
+---@return boolean success
+function SQBP.Functions.RemoveMoney(moneyType, amount, reason) end
+
+---Sets the amount of money for the given account of this player
+---@param moneyType 'cash'|'bank'|'crypto'
+---@param amount number
+---@param reason string? the reason for setting the money
+function SQBP.Functions.SetMoney(moneyType, amount, reason) end
+
+---Returns the amount of money the player has
+---@nodiscard
+---@param moneyType 'cash'|'bank'|'crypto'
+---@return number amount the amount of money the player has
+function SQBP.Functions.GetMoney(moneyType) end
+
+---Saves the player to the database
+function SQBP.Functions.Save() end
+
+---Makes the player logout
+function SQBP.Functions.Logout() end
+
+---Sets the function with the given name to the given handler
+---@param methodName string the name of the function
+---@param handler fun(...:any) : ... the handler of the function
+function SQBP.Functions.AddMethod(methodName, handler) end
+
+---Sets the given field to the given value
+---@param fieldName string the name of the field
+---@param data any the data to set
+function SQBP.Functions.AddField(fieldName, data) end
 
 ---@param name 'QBCore:DebugSometing'
 ---@param tbl table

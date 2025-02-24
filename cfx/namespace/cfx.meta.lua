@@ -1,9 +1,9 @@
 ---@meta CFX
 
 
---[[ ======================================== ]]--
---[[ ============= **SHARED** =============== ]]--
---[[ ======================================== ]]--
+--[[ ======================================== ]] --
+--[[ ============= **SHARED** =============== ]] --
+--[[ ======================================== ]] --
 
 --#region **SHARED**
 
@@ -12,7 +12,7 @@
 ---*example:* [FiveM Docs](https://docs.fivem.net/natives/?_0x5BA35AAF)
 ---@param keyFilter string? The key to check for, or null for no filter.
 ---@param bagFilter string? The bag ID to check for such as entity:65535, or null for no filter.
----@param handler fun(bagName: string, key: string, value: any, reserved: number, replicated: boolean) 
+---@param handler fun(bagName: string, key: string, value: any, reserved: number, replicated: boolean)
 ---* `bagName`: The internal bag ID for the state bag which changed. This is usually player:Source, entity:NetID or localEntity:Handle.<br>
 ---* `key`: The changed key<br>
 ---* `value`: The new value stored at key.<br>
@@ -54,6 +54,19 @@ function GetResourceKvpFloat(key) end
 ---@param key string
 ---@param value number
 function SetResourceKvpFloat(key, value) end
+
+---**SHARED**<br>
+---Returns the resource kvp (saved locally) for the given key
+---@nodiscard
+---@param key string
+---@return number value
+function GetResourceKvpString(key) end
+
+---**SHARED**<br>
+---Sets the resource kvp (saved locally) for the given key
+---@param key string
+---@param value number
+function SetResourceKvpString(key, value) end
 
 --#endregion
 
@@ -280,7 +293,6 @@ function SetRoutingBucketPopulationEnabled(bucketId, mode) end
 ---@param resource string the resource name
 ---@return boolean success some boolean (success I guess?)
 function StopResource(resource) end
-
 
 ---**SERVER**<br>
 ---Removes all weapons from the given ped.
