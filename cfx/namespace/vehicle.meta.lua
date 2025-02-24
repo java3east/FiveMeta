@@ -81,6 +81,21 @@ function GetVehicleClass(vehicle) end
 ---@return string
 function GetDisplayNameFromVehicleModel(modelHash) end
 
+---**CLIENT**
+---Opens the door of the given vehicle
+---@param vehicle vehicle the vehicle to open the door of
+---@param doorIndex integer the index of the door to open
+---@param loose boolean if lose the door can be closed more easily again
+---@param opneInstantly boolean if the door should open instantly
+function SetVehicleDoorOpen(vehicle, doorIndex, loose, opneInstantly) end
+
+---**CLIENT**
+---Closes the door of the given vehicle
+---@param vehicle vehicle the vehicle to close the door of
+---@param doorIndex integer the index of the door to close
+---@param closeInstantly boolean if the door should close instantly
+function SetVehicleDoorShut(vehicle, doorIndex, closeInstantly) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

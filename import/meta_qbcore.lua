@@ -1196,8 +1196,8 @@ function SQBP.Functions.SetGang(gang, grade) end
 
 ---Displays a notification to the player
 ---@param text string the text of the notification
----@param type 'primary'|'error'|'police'|'ambulance' the type of the notification
----@param length integer the time in milliseconds the notification should be displayed
+---@param type 'primary'|'error'|'police'|'ambulance'? the type of the notification
+---@param length integer? the time in milliseconds the notification should be displayed
 function SQBP.Functions.Notify(text, type, length) end
 
 ---Checks if the player has the given item
