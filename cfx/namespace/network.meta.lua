@@ -37,6 +37,13 @@ function NetworkResurrectLocalPlayer(x, y, z, heading, nInvincibilityTime, bLeav
 ---@return player player the player index
 function NetworkGetPlayerIndexFromPed(ped) end
 
+---**CLIENT**<br>
+---Sets the time of day
+---@param Hours number The hour
+---@param Minutes number The minute
+---@param Seconds number The second
+function NetworkOverrideClockTime(Hours, Minutes, Seconds) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

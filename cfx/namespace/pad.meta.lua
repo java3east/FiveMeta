@@ -57,6 +57,14 @@ function GetDisabledControlNormal(padIndex, control) end
 ---@return boolean isPressed true if the control is pressed
 function IsDisabledControlJustPressed(padIndex, control) end
 
+---**CLIENT**<br>
+---Checks if the given disabled control is released
+---@nodiscard
+---@param padIndex integer
+---@param control integer
+---@return boolean isReleased true if the control is released
+function IsDisabledControlJustReleased(padIndex, control) end
+
 --#endregion
 
 ---[[ ======================================== ]]--
