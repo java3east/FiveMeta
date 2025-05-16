@@ -68,6 +68,12 @@ function GetResourceKvpString(key) end
 ---@param value number
 function SetResourceKvpString(key, value) end
 
+---Returns the hash of the weapon the given ped is currently holding.
+---@nodiscard
+---@param ped ped the ped to get the weapon from
+---@return hash weaponHash the weapon hash
+function GetCurrentPedWeapon(ped) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

@@ -38,6 +38,13 @@ function GetAmmoInPedWeapon(ped, weaponHash) end
 ---@param p2 boolean unknown (mostly 1/true in scripts)
 function GetMaxAmmoInClip(ped, weaponHash, p2) end
 
+---**CLIENT**<br>
+---Sets the weapon tint index for the given ped's weapon
+---@param ped ped the ped to set the tint index for
+---@param weaponHash hash the weapon hash
+---@param tintIndex integer the tint index to set
+function SetPedWeaponTintIndex(ped, weaponHash, tintIndex) end
+
 --#endregion
 
 ---[[ ======================================== ]]--

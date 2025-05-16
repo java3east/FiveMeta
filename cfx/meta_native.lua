@@ -536,6 +536,12 @@ function SetHandlingField(vehicle, class, key, value) end
 ---@return boolean released
 function IsControlPressed(controlType, controlIndex) end
 
+---Checks if the given key just got pressed.
+---@param controlType integer usually 0
+---@param controlIndex integer Key.index
+---@return boolean released
+function IsDisabledControlPressed(controlType, controlIndex) end
+
 ---Activates the vehicle boost sound.
 ---@param vehicle vehicle
 ---@param active boolean
