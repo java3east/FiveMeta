@@ -38,6 +38,12 @@ description = function(description) end
 ---@param version string
 version = function(version) end
 
+---@param isMap 'yes'|'no'
+this_is_a_map = function (isMap) end
+
+---@param str string
+replace_level_meta = function(str) end
+
 ---@type fun(script: string)
 client_script = nil
 
